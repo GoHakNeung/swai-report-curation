@@ -3,10 +3,10 @@
 <ul class="report-list">
   {% for report in instReports %}
   <li>
-    <a href="{{ report.url }}">{{ report.data.title }}</a>
+    <a href="{{ report.url | url }}">{{ report.data.title }}</a>
     <span class="lead-researcher">{{ report.data.lead_researcher }}</span>
     <time>{{ report.data.date | ymd }}</time>
   </li>
   {% endfor %}
 </ul>
-<p><a href="/">← 첫 페이지로</a></p>
+<p><a href="{{ '/' | url }}">← 첫 페이지로</a></p>
