@@ -1,0 +1,9 @@
+---
+layout: base.njk
+---
+<div class="grid">
+  {% for institution in institutions | byOrder %}
+    {% set instReports = collections.reports | byInstitution(institution.code) %}
+    {% include "card.njk" %}
+  {% endfor %}
+</div>

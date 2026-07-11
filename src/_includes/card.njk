@@ -1,0 +1,18 @@
+{# 첫 페이지 그리드의 기관 1칸. index.njk에서 institution / instReports를 넘겨 include한다. #}
+<section class="inst-card" data-code="{{ institution.code }}">
+  <h2>{{ institution.name }}</h2>
+
+  {% if institution.link_only %}
+    <a class="btn-link" href="{{ institution.url }}" target="_blank" rel="noopener">사이트 바로가기</a>
+  {% else %}
+    <ul class="report-list">
+      {% for report in instReports %}
+      <li>
+        <a href="{{ report.url }}">{{ report.data.title }}</a>
+        <span class="lead-researcher">{{ report.data.lead_researcher }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <a class="more" href="/institutions/{{ institution.code }}/">더보기</a>
+  {% endif %}
+</section>

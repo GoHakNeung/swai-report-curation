@@ -1,0 +1,12 @@
+{% set instReports = collections.reports | byInstitution(institution.code, 999) %}
+<h1>{{ institution.name }}</h1>
+<ul class="report-list">
+  {% for report in instReports %}
+  <li>
+    <a href="{{ report.url }}">{{ report.data.title }}</a>
+    <span class="lead-researcher">{{ report.data.lead_researcher }}</span>
+    <time>{{ report.data.date | ymd }}</time>
+  </li>
+  {% endfor %}
+</ul>
+<p><a href="/">← 첫 페이지로</a></p>

@@ -1,0 +1,13 @@
+{
+  "name": "swai-report-curation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "국내 교육·SW 연구기관 SW·AI 관련 보고서 큐레이션 사이트 (Eleventy)",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
