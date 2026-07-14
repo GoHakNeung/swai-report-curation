@@ -1,18 +1,25 @@
-{# 첫 페이지 그리드의 기관 1칸. index.njk에서 institution / instReports를 넘겨 include한다. #}
 <section class="inst-card" data-code="{{ institution.code }}">
-  <h2>{{ institution.name }}</h2>
+  <div class="inst-card-header">
+    <div class="inst-card-info">
+      <div class="inst-mark" style="background: {{ institution.color }}22; border: 1px solid {{ institution.color }}55; color: {{ institution.color }};">{{ institution.mark }}</div>
+      <div class="inst-name">{{ institution.name }}</div>
+    </div>
+    {% if not institution.link_only %}<div class="inst-count">{{ instReports.length }}건</div>{% endif %}
+  </div>
 
   {% if institution.link_only %}
     <a class="btn-link" href="{{ institution.list_url }}" target="_blank" rel="noopener">사이트 바로가기</a>
   {% else %}
     <ul class="report-list">
-      {% for report in instReports | limit(6) %}
+      {% for report in instReports | limit(5) %}
       <li>
-        <a href="{{ report.url | url }}">{{ report.data.title }}</a>
-        <span class="lead-researcher">{{ report.data.lead_researcher }}</span>
+        <a href="{{ report.url | url }}">
+          <span class="report-title">{{ report.data.title }}</span>
+          <span class="report-date">{{ report.data.date | ymd }}</span>
+        </a>
       </li>
       {% endfor %}
     </ul>
-    {% if instReports.length > 6 %}<a class="more" href="{{ institution.list_url }}" target="_blank" rel="noopener">더보기</a>{% endif %}
+    {% if instReports.length > 5 %}<a class="more-btn" href="{{ institution.list_url }}" target="_blank" rel="noopener">더보기 →</a>{% endif %}
   {% endif %}
 </section>

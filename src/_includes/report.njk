@@ -1,37 +1,38 @@
-{# 보고서 상세 페이지 레이아웃 #}
-<div class="breadcrumb">
-  <a href="{{ '/' | url }}">← 돌아가기</a>
-</div>
+<div style="max-width: 920px; margin: 0 auto; padding: 40px;">
+  <div class="breadcrumb">
+    <a href="{{ '/' | url }}">← 돌아가기</a>
+  </div>
 
-<article class="report">
-  <h1>{{ title }}</h1>
+  <article class="report">
+    <h1>{{ title }}</h1>
 
-  <dl class="report-meta">
-    <dt>연구책임자</dt>
-    <dd>{{ lead_researcher }}</dd>
-    <dt>게시일</dt>
-    <dd>{{ date | ymd }}</dd>
-    {% if keywords and keywords.length %}
-    <dt>키워드</dt>
-    <dd>
-      {% for keyword in keywords %}<span style="display: inline-block; background: #e0e7ff; color: #4f46e5; padding: 0.25rem 0.75rem; border-radius: 0.25rem; margin-right: 0.5rem; font-size: 0.8rem;">{{ keyword }}</span>{% endfor %}
-    </dd>
+    <dl class="report-meta">
+      <dt>연구책임자</dt>
+      <dd>{{ lead_researcher }}</dd>
+      <dt>게시일</dt>
+      <dd>{{ date | ymd }}</dd>
+      {% if keywords and keywords.length %}
+      <dt>키워드</dt>
+      <dd>
+        {% for keyword in keywords %}<span style="display: inline-block; background: #6C5CE7; color: #fff; padding: 0.25rem 0.75rem; border-radius: 0.25rem; margin-right: 0.5rem; font-size: 0.8rem;">{{ keyword }}</span>{% endfor %}
+      </dd>
+      {% endif %}
+    </dl>
+
+    {% if table_of_contents %}
+    <div class="table-of-contents">
+      <h3>목차</h3>
+      <div>{{ table_of_contents | safe }}</div>
+    </div>
     {% endif %}
-  </dl>
 
-  {% if table_of_contents %}
-  <div class="table-of-contents">
-    <h3>목차</h3>
-    <div>{{ table_of_contents | safe }}</div>
-  </div>
-  {% endif %}
+    <div class="report-body">
+      {{ content | safe }}
+    </div>
 
-  <div class="report-body">
-    {{ content | safe }}
-  </div>
-
-  <div class="report-links">
-    <a href="{{ source_url }}" target="_blank" rel="noopener">원문 보기</a>
-    {% if pdf_url %}<a href="{{ pdf_url }}" target="_blank" rel="noopener">PDF 다운로드</a>{% endif %}
-  </div>
-</article>
+    <div class="report-links">
+      <a href="{{ source_url }}" target="_blank" rel="noopener">원문 보기</a>
+      {% if pdf_url %}<a href="{{ pdf_url }}" target="_blank" rel="noopener">PDF 다운로드</a>{% endif %}
+    </div>
+  </article>
+</div>

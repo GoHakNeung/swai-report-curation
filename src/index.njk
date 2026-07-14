@@ -8,7 +8,12 @@ layout: base.njk
       {% include "card.njk" %}
     {% endfor %}
   </div>
-  <div class="search-results" id="searchResults" style="display: none;"></div>
+  <div class="search-results" id="searchResults" style="display: none;">
+    <div style="max-width: 920px; margin: 0 auto; padding: 40px;">
+      <div class="search-result-label" id="resultLabel"></div>
+      <div id="resultsList"></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -18,12 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const grid = document.getElementById('institutionGrid');
   const resultsContainer = document.getElementById('searchResults');
+  const resultLabel = document.getElementById('resultLabel');
+  const resultsList = document.getElementById('resultsList');
 
   const reportsData = [
     {% for report in collections.reports %}{
       url: '{{ report.url }}',
       title: '{{ report.data.title }}',
       institution: '{{ report.data.institution }}',
+      date: '{{ report.data.date | ymd }}',
       keywords: [{% for kw in report.data.keywords %}'{{ kw }}'{{ "," if not loop.last }}{% endfor %}],
       abstract: '{{ report.data.abstract or "" }}'
     }{{ "," if not loop.last }}{% endfor %}
@@ -60,24 +68,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     if (results.length === 0) {
-      resultsContainer.innerHTML = '<div class="no-results"><p>검색 결과가 없습니다.</p></div>';
+      resultLabel.textContent = `"${query}" 검색 결과 0건`;
+      resultsList.innerHTML = '<div class="no-results"><p>검색 결과가 없습니다.</p></div>';
       grid.style.display = 'none';
       resultsContainer.style.display = 'block';
       return;
     }
 
+    resultLabel.textContent = `"${query}" 검색 결과 ${results.length}건`;
     const resultHTML = results.map(report => {
       const inst = institutionsData.find(i => i.code === report.institution);
       const instName = inst ? inst.name : '미분류';
       return `
         <div class="search-result-item">
-          <div class="search-result-inst">${instName}</div>
-          <a href="${report.url}">${report.title}</a>
+          <a href="${report.url}">
+            <span class="search-result-inst">${instName}</span>
+            <span class="search-result-title">${report.title}</span>
+            <span class="search-result-date">${report.date}</span>
+          </a>
         </div>
       `;
     }).join('');
 
-    resultsContainer.innerHTML = resultHTML;
+    resultsList.innerHTML = resultHTML;
     grid.style.display = 'none';
     resultsContainer.style.display = 'block';
   }
