@@ -3,17 +3,389 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if title %}{{ title }} · {% endif %}SW·AI 연구보고서 큐레이션</title>
+  <title>{% if title %}{{ title }} · {% endif %}SW·AI 아카이브</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: #fafbfc;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header > div {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    header h1 a {
+      color: #1f2937;
+    }
+
+    .header-search {
+      flex: 1;
+      max-width: 400px;
+      margin: 0 2rem;
+    }
+
+    .header-search input {
+      width: 100%;
+      padding: 0.625rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      transition: border-color 0.2s;
+    }
+
+    .header-search input:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: #e5e7eb;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header > div {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .header-search {
+        max-width: none;
+        margin: 0;
+      }
+    }
+
+    .inst-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .inst-card:hover {
+      border-color: #4f46e5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .inst-card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+
+    .report-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .report-list li {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .report-list li:last-child {
+      border-bottom: none;
+    }
+
+    .report-list a {
+      display: block;
+      font-size: 0.875rem;
+      line-height: 1.4;
+      color: #4f46e5;
+      margin-bottom: 0.25rem;
+      word-break: break-word;
+    }
+
+    .report-list a:hover {
+      text-decoration: underline;
+    }
+
+    .lead-researcher {
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: block;
+    }
+
+    .inst-card .more {
+      display: inline-block;
+      font-size: 0.875rem;
+      padding: 0.5rem 0;
+      color: #6b7280;
+      border-bottom: 1px solid #d1d5db;
+    }
+
+    .inst-card .more:hover {
+      color: #4f46e5;
+      border-bottom-color: #4f46e5;
+    }
+
+    .btn-link {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: #4f46e5;
+      color: #ffffff;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .btn-link:hover {
+      background: #4338ca;
+      text-decoration: none;
+    }
+
+    .search-results {
+      margin-bottom: 2rem;
+    }
+
+    .search-result-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .search-result-item:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .search-result-inst {
+      font-size: 0.75rem;
+      color: #6b7280;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
+    }
+
+    .search-result-item a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #4f46e5;
+    }
+
+    .search-result-item a:hover {
+      text-decoration: underline;
+    }
+
+    article.report {
+      max-width: 900px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 2rem;
+    }
+
+    article.report h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+      color: #1f2937;
+    }
+
+    .report-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.5rem 1rem;
+      padding: 1.5rem;
+      background: #f9fafb;
+      border-radius: 0.375rem;
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+      border-left: 4px solid #4f46e5;
+    }
+
+    .report-meta dt {
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .report-meta dd {
+      color: #1f2937;
+      margin: 0;
+    }
+
+    .report-body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #374151;
+      margin-bottom: 2rem;
+    }
+
+    .report-body h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem;
+      color: #1f2937;
+    }
+
+    .report-body h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 1.25rem 0 0.5rem;
+      color: #374151;
+    }
+
+    .report-body ul, .report-body ol {
+      margin: 0.75rem 0 0.75rem 1.5rem;
+    }
+
+    .report-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    .table-of-contents {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-size: 0.875rem;
+    }
+
+    .table-of-contents h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .table-of-contents ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    .table-of-contents li {
+      padding: 0.25rem 0;
+    }
+
+    .report-links {
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5e7eb;
+      font-size: 0.875rem;
+    }
+
+    .report-links a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #4f46e5;
+      color: #ffffff;
+      border-radius: 0.375rem;
+      margin-right: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .report-links a:hover {
+      background: #4338ca;
+      text-decoration: none;
+    }
+
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .breadcrumb a {
+      color: #4f46e5;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #6b7280;
+    }
+
+    .no-results p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <a href="{{ '/' | url }}">SW·AI 연구보고서 큐레이션</a>
+    <div>
+      <h1><a href="{{ '/' | url }}">SWAI 아카이브</a></h1>
+      {% if page.url == "/" %}<div class="header-search">
+        <input type="text" id="searchInput" placeholder="제목, 키워드, 요약으로 검색...">
+      </div>{% endif %}
+    </div>
   </header>
   <main>
     {{ content | safe }}
   </main>
   <footer>
-    <p>국내 교육·SW 연구기관 SW·AI 관련 보고서 큐레이션</p>
+    <p>국내 교육·SW 연구기관의 SW·AI 관련 보고서를 수집·요약한 정적 아카이브</p>
   </footer>
 </body>
 </html>

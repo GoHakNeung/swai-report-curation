@@ -1,6 +1,11 @@
-{# 보고서 상세 페이지 레이아웃. src/reports/reports.json 이 이 레이아웃을 자동 적용한다. #}
+{# 보고서 상세 페이지 레이아웃 #}
+<div class="breadcrumb">
+  <a href="{{ '/' | url }}">← 돌아가기</a>
+</div>
+
 <article class="report">
   <h1>{{ title }}</h1>
+
   <dl class="report-meta">
     <dt>연구책임자</dt>
     <dd>{{ lead_researcher }}</dd>
@@ -8,16 +13,25 @@
     <dd>{{ date | ymd }}</dd>
     {% if keywords and keywords.length %}
     <dt>키워드</dt>
-    <dd>{{ keywords | join(", ") }}</dd>
+    <dd>
+      {% for keyword in keywords %}<span style="display: inline-block; background: #e0e7ff; color: #4f46e5; padding: 0.25rem 0.75rem; border-radius: 0.25rem; margin-right: 0.5rem; font-size: 0.8rem;">{{ keyword }}</span>{% endfor %}
+    </dd>
     {% endif %}
   </dl>
+
+  {% if table_of_contents %}
+  <div class="table-of-contents">
+    <h3>목차</h3>
+    <div>{{ table_of_contents | safe }}</div>
+  </div>
+  {% endif %}
 
   <div class="report-body">
     {{ content | safe }}
   </div>
 
-  <p class="report-links">
+  <div class="report-links">
     <a href="{{ source_url }}" target="_blank" rel="noopener">원문 보기</a>
-    {% if pdf_url %} · <a href="{{ pdf_url }}" target="_blank" rel="noopener">PDF</a>{% endif %}
-  </p>
+    {% if pdf_url %}<a href="{{ pdf_url }}" target="_blank" rel="noopener">PDF 다운로드</a>{% endif %}
+  </div>
 </article>

@@ -22,12 +22,45 @@ module.exports = function (eleventyConfig) {
   });
 
   // 특정 기관의 보고서를 최신순으로 최대 limit건 반환 (기본 6건, 첫 페이지 그리드용)
-  eleventyConfig.addFilter("byInstitution", (reports, code, limit = 6) =>
-    (reports || [])
+  eleventyConfig.addFilter("byInstitution", (reports, code, limit = 6) => {
+    const filtered = (reports || [])
       .filter((r) => r.data.institution === code)
-      .sort((a, b) => b.date - a.date)
-      .slice(0, limit)
-  );
+      .sort((a, b) => {
+        const dateA = a.data.date instanceof Date ? a.data.date : new Date(a.data.date);
+        const dateB = b.data.date instanceof Date ? b.data.date : new Date(b.data.date);
+        return dateB - dateA;
+      })
+      .slice(0, limit);
+    return filtered;
+  });
+
+  // JSON 직렬화 필터 (for client-side JS)
+  eleventyConfig.addFilter("dump", (data) => {
+    const serialized = {
+      institutions: data.institutions || [],
+      reports: (data.reports || []).map(r => ({
+        url: r.url,
+        data: {
+          institution: r.data.institution,
+          title: r.data.title,
+          keywords: r.data.keywords || [],
+          abstract_excerpt: (r.template || '').substring(0, 150)
+        }
+      }))
+    };
+    return JSON.stringify(serialized);
+  });
+
+  // 기관 코드로 기관 이름 조회
+  eleventyConfig.addFilter("instName", (code, institutions) => {
+    const inst = (institutions || []).find(i => i.code === code);
+    return inst ? inst.name : '미분류';
+  });
+
+  // 최대 문자수로 자르기
+  eleventyConfig.addFilter("limit", (array, count) => {
+    return (array || []).slice(0, count);
+  });
 
   return {
     dir: {

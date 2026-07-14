@@ -4,11 +4,12 @@ module.exports = {
     data: "institutions",
     size: 1,
     alias: "institution",
+    before: (paginationData) => {
+      return paginationData.filter((inst) => !inst.link_only);
+    },
   },
   eleventyComputed: {
-    // link_only 기관은 목록 페이지를 만들지 않는다.
-    permalink: (data) =>
-      data.institution.link_only ? false : `/institutions/${data.institution.code}/`,
+    permalink: (data) => `/institutions/${data.institution.code}/`,
     title: (data) => data.institution.name,
   },
 };

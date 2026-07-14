@@ -3,16 +3,16 @@
   <h2>{{ institution.name }}</h2>
 
   {% if institution.link_only %}
-    <a class="btn-link" href="{{ institution.url }}" target="_blank" rel="noopener">사이트 바로가기</a>
+    <a class="btn-link" href="{{ institution.list_url }}" target="_blank" rel="noopener">사이트 바로가기</a>
   {% else %}
     <ul class="report-list">
-      {% for report in instReports %}
+      {% for report in instReports | limit(6) %}
       <li>
         <a href="{{ report.url | url }}">{{ report.data.title }}</a>
         <span class="lead-researcher">{{ report.data.lead_researcher }}</span>
       </li>
       {% endfor %}
     </ul>
-    <a class="more" href="{{ ('/institutions/' + institution.code + '/') | url }}">더보기</a>
+    {% if instReports.length > 6 %}<a class="more" href="{{ institution.list_url }}" target="_blank" rel="noopener">더보기</a>{% endif %}
   {% endif %}
 </section>

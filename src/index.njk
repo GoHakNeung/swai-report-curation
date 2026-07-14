@@ -1,9 +1,96 @@
 ---
 layout: base.njk
 ---
-<div class="grid">
-  {% for institution in institutions | byOrder %}
-    {% set instReports = collections.reports | byInstitution(institution.code) %}
-    {% include "card.njk" %}
-  {% endfor %}
+<div id="archiveContainer">
+  <div class="grid" id="institutionGrid">
+    {% for institution in institutions | byOrder %}
+      {% set instReports = collections.reports | byInstitution(institution.code) %}
+      {% include "card.njk" %}
+    {% endfor %}
+  </div>
+  <div class="search-results" id="searchResults" style="display: none;"></div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  if (!searchInput) return;
+
+  const grid = document.getElementById('institutionGrid');
+  const resultsContainer = document.getElementById('searchResults');
+
+  const reportsData = [
+    {% for report in collections.reports %}{
+      url: '{{ report.url }}',
+      title: '{{ report.data.title }}',
+      institution: '{{ report.data.institution }}',
+      keywords: [{% for kw in report.data.keywords %}'{{ kw }}'{{ "," if not loop.last }}{% endfor %}],
+      abstract: '{{ report.data.abstract or "" }}'
+    }{{ "," if not loop.last }}{% endfor %}
+  ];
+
+  const institutionsData = [
+    {% for inst in institutions %}{
+      code: '{{ inst.code }}',
+      name: '{{ inst.name }}'
+    }{{ "," if not loop.last }}{% endfor %}
+  ];
+
+  function normalizeText(text) {
+    return (text || '').toLowerCase().trim();
+  }
+
+  function performSearch(query) {
+    const normalized = normalizeText(query);
+
+    if (!normalized) {
+      grid.style.display = 'grid';
+      resultsContainer.style.display = 'none';
+      return;
+    }
+
+    const results = reportsData.filter(report => {
+      const title = normalizeText(report.title);
+      const abstract = normalizeText(report.abstract);
+      const keywords = report.keywords.map(k => normalizeText(k));
+
+      return title.includes(normalized) ||
+             abstract.includes(normalized) ||
+             keywords.some(k => k.includes(normalized));
+    });
+
+    if (results.length === 0) {
+      resultsContainer.innerHTML = '<div class="no-results"><p>검색 결과가 없습니다.</p></div>';
+      grid.style.display = 'none';
+      resultsContainer.style.display = 'block';
+      return;
+    }
+
+    const resultHTML = results.map(report => {
+      const inst = institutionsData.find(i => i.code === report.institution);
+      const instName = inst ? inst.name : '미분류';
+      return `
+        <div class="search-result-item">
+          <div class="search-result-inst">${instName}</div>
+          <a href="${report.url}">${report.title}</a>
+        </div>
+      `;
+    }).join('');
+
+    resultsContainer.innerHTML = resultHTML;
+    grid.style.display = 'none';
+    resultsContainer.style.display = 'block';
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    performSearch(e.target.value);
+  });
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      performSearch('');
+    }
+  });
+});
+</script>
