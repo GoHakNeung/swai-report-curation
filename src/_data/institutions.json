@@ -45,7 +45,8 @@
     "mark": "KEDI",
     "color": "#00b894",
     "order": 8,
-    "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do"
+    "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do",
+    "link_only": true
   },
   {
     "code": "kice-cardnews",
