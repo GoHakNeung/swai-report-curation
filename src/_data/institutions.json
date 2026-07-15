@@ -45,8 +45,7 @@
     "mark": "KEDI",
     "color": "#00b894",
     "order": 8,
-    "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do",
-    "link_only": true
+    "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do"
   },
   {
     "code": "kice-cardnews",
@@ -54,8 +53,7 @@
     "mark": "KICE",
     "color": "#6C5CE7",
     "order": 7,
-    "list_url": "https://www.kice.re.kr/cardNewsBoard/list.do?boardId=1&s=kice&m=030216",
-    "link_only": true
+    "list_url": "https://www.kice.re.kr/cardNewsBoard/list.do?boardId=1&s=kice&m=030216"
   },
   {
     "code": "keris-issue",
