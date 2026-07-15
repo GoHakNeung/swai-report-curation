@@ -44,7 +44,7 @@
     "name": "교육개발원 브리프",
     "mark": "KEDI",
     "color": "#00b894",
-    "order": 6,
+    "order": 8,
     "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do"
   },
   {
@@ -61,7 +61,7 @@
     "name": "한국교육학술정보원 이슈리포트",
     "mark": "KERIS",
     "color": "#0984e3",
-    "order": 8,
+    "order": 6,
     "list_url": "https://keris.or.kr/main/ad/pblcte/selectPblcteRMList.do?mi=1139"
   },
   {
