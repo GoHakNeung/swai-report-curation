@@ -8,92 +8,92 @@
     "list_url": "https://www.kice.re.kr/resrchBoard/list.do?cate=0&m=030109&s=kice"
   },
   {
-    "code": "kice-trend",
-    "name": "교육과정평가원 국제교육동향",
-    "mark": "KICE",
-    "color": "#6C5CE7",
-    "order": 2,
-    "list_url": "https://www.kice.re.kr/boardCnts/list.do?boardID=5000064&m=030207&s=kice"
-  },
-  {
-    "code": "kice-cardnews",
-    "name": "교육과정평가원 카드뉴스",
-    "mark": "KICE",
-    "color": "#6C5CE7",
-    "order": 3,
-    "list_url": "https://www.kice.re.kr/cardNewsBoard/list.do?boardId=1&s=kice&m=030216",
-    "link_only": true
-  },
-  {
     "code": "kedi-research",
     "name": "교육개발원 연구보고서",
     "mark": "KEDI",
     "color": "#00b894",
-    "order": 4,
+    "order": 2,
     "list_url": "https://www.kedi.re.kr/khome/main/research/listPubForm.do"
-  },
-  {
-    "code": "kedi-brief",
-    "name": "교육개발원 브리프",
-    "mark": "KEDI",
-    "color": "#00b894",
-    "order": 5,
-    "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do"
-  },
-  {
-    "code": "edpolicy-domestic",
-    "name": "교육정책네트워크 국가별교육동향",
-    "mark": "KEDI",
-    "color": "#00b894",
-    "order": 6,
-    "list_url": "https://edpolicy.kedi.re.kr/edpolicy/board/30"
-  },
-  {
-    "code": "edpolicy-intl",
-    "name": "교육정책네트워크 국제기구동향",
-    "mark": "KEDI",
-    "color": "#00b894",
-    "order": 7,
-    "list_url": "https://edpolicy.kedi.re.kr/edpolicy/board/31"
-  },
-  {
-    "code": "spri",
-    "name": "소프트웨어정책연구소",
-    "mark": "SPRi",
-    "color": "#fdcb6e",
-    "order": 8,
-    "list_url": "https://www.spri.kr/posts?data_page=1&code=data_all&study_type=&board_type=research"
   },
   {
     "code": "kosac-research",
     "name": "한국과학창의재단 연구보고서",
     "mark": "KOFAC",
     "color": "#e17055",
-    "order": 9,
+    "order": 3,
     "list_url": "https://www.kosac.re.kr/menus/244/boards/457/posts"
-  },
-  {
-    "code": "kosac-trend",
-    "name": "한국과학창의재단 동향리포트",
-    "mark": "KOFAC",
-    "color": "#e17055",
-    "order": 10,
-    "list_url": "https://www.kosac.re.kr/menus/248/boards/459/posts"
   },
   {
     "code": "keris-research",
     "name": "한국교육학술정보원 연구보고서",
     "mark": "KERIS",
     "color": "#0984e3",
-    "order": 11,
+    "order": 4,
     "list_url": "https://keris.or.kr/main/ad/pblcte/selectPblcteRRList.do?mi=1138"
+  },
+  {
+    "code": "spri",
+    "name": "소프트웨어정책연구소",
+    "mark": "SPRi",
+    "color": "#fdcb6e",
+    "order": 5,
+    "list_url": "https://www.spri.kr/posts?data_page=1&code=data_all&study_type=&board_type=research"
+  },
+  {
+    "code": "kedi-brief",
+    "name": "교육개발원 브리프",
+    "mark": "KEDI",
+    "color": "#00b894",
+    "order": 6,
+    "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do"
+  },
+  {
+    "code": "kice-cardnews",
+    "name": "교육과정평가원 카드뉴스",
+    "mark": "KICE",
+    "color": "#6C5CE7",
+    "order": 7,
+    "list_url": "https://www.kice.re.kr/cardNewsBoard/list.do?boardId=1&s=kice&m=030216",
+    "link_only": true
   },
   {
     "code": "keris-issue",
     "name": "한국교육학술정보원 이슈리포트",
     "mark": "KERIS",
     "color": "#0984e3",
-    "order": 12,
+    "order": 8,
     "list_url": "https://keris.or.kr/main/ad/pblcte/selectPblcteRMList.do?mi=1139"
+  },
+  {
+    "code": "kosac-trend",
+    "name": "한국과학창의재단 동향리포트",
+    "mark": "KOFAC",
+    "color": "#e17055",
+    "order": 9,
+    "list_url": "https://www.kosac.re.kr/menus/248/boards/459/posts"
+  },
+  {
+    "code": "edpolicy-intl",
+    "name": "교육정책네트워크 국제기구동향",
+    "mark": "KEDI",
+    "color": "#00b894",
+    "order": 10,
+    "list_url": "https://edpolicy.kedi.re.kr/edpolicy/board/31"
+  },
+  {
+    "code": "kice-trend",
+    "name": "교육과정평가원 국제교육동향",
+    "mark": "KICE",
+    "color": "#6C5CE7",
+    "order": 11,
+    "list_url": "https://www.kice.re.kr/boardCnts/list.do?boardID=5000064&m=030207&s=kice"
+  },
+  {
+    "code": "edpolicy-domestic",
+    "name": "교육정책네트워크 국가별교육동향",
+    "mark": "KEDI",
+    "color": "#00b894",
+    "order": 12,
+    "list_url": "https://edpolicy.kedi.re.kr/edpolicy/board/30"
   }
 ]
