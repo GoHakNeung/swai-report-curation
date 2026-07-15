@@ -4,10 +4,9 @@ layout: base.njk
 <div id="archiveContainer">
   <div class="grid" id="institutionGrid">
     {% for institution in institutions | byOrder %}
-      {% if loop.index == 1 %}<div class="group group-research">{% endif %}
-      {% if loop.index == 7 %}</div><div class="group group-cardnews">{% endif %}
-      {% if loop.index == 9 %}</div><div class="group group-trend">{% endif %}
-      {% if loop.index == 11 %}</div><div class="group group-international">{% endif %}
+      {% if loop.index == 1 %}<div class="group">{% endif %}
+      {% if loop.index == 7 %}</div><div class="group">{% endif %}
+      {% if loop.index == 9 %}</div><div class="group">{% endif %}
 
       {% set instReports = collections.reports | byInstitution(institution.code) %}
       {% include "card.njk" %}
