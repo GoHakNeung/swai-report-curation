@@ -140,16 +140,39 @@
       border-color: #6C5CE7;
     }
 
-    .inst-card:nth-child(-n+6) {
-      border-left: 4px solid #6C5CE7;
+    .group {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 16px;
     }
 
-    .inst-card:nth-child(n+7):nth-child(-n+8) {
-      border-left: 4px solid #00b894;
+    .group-research {
+      border-color: #6C5CE7;
     }
 
-    .inst-card:nth-child(n+9) {
-      border-left: 4px solid #e17055;
+    .group-trend {
+      border-color: #e17055;
+    }
+
+    .group-international {
+      border-color: #00b894;
+    }
+
+    .group-cardnews {
+      border: none;
+      padding: 0;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .group {
+        grid-template-columns: 1fr;
+        padding: 12px;
+      }
     }
 
     .inst-card-header {
