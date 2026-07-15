@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <template id="__bundler_thumbnail" data-bg-color="#0b0c0e">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="800" fill="#0b0c0e"/>
+      <rect x="360" y="240" width="130" height="130" rx="24" fill="#0984e3"/>
+      <text x="425" y="335" font-family="sans-serif" font-size="80" font-weight="800" fill="#fff" text-anchor="middle">R</text>
+      <text x="600" y="480" font-family="sans-serif" font-size="54" font-weight="700" fill="#e8e8ea" text-anchor="middle">연구보고서형</text>
+    </svg>
+  </template>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'Pretendard'; src: local('Pretendard'); }
+    body { margin: 0; background: #0b0c0e; font-family: 'Pretendard', -apple-system, 'Malgun Gothic', sans-serif; }
+    ::selection { background: #6C5CE7; color: #fff; }
+    a { color: #8b7cf6; text-decoration: none; }
+    a:hover { color: #a89bff; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#0b0c0e; color:#e8e8ea;">
+  <div style="max-width:820px; margin:0 auto; padding:56px 40px;">
+
+    <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+      <div style="flex:0 0 auto; width:34px; height:34px; border-radius:8px; background:{{ doc.color }}22; border:1px solid {{ doc.color }}55; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:{{ doc.color }}; font-family:'IBM Plex Mono',monospace;">{{ doc.mark }}</div>
+      <div style="font-size:14px; color:#c9cad0;">{{ doc.institutionName }}</div>
+      <div style="width:3px; height:3px; border-radius:50%; background:#3a3c42;"></div>
+      <div style="font-size:13px; color:#5a5d66; font-family:'IBM Plex Mono',monospace;">{{ doc.date }}</div>
+    </div>
+
+    <h1 style="font-size:26px; font-weight:700; line-height:1.4; margin:0 0 18px; color:#f2f2f3;">{{ doc.title }}</h1>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:28px; padding-bottom:28px; border-bottom:1px solid #1e1f24;">
+      <div style="font-size:11px; padding:4px 9px; border-radius:6px; background:#17181c; border:1px solid #2a2c31; color:#8a8d96; font-family:'IBM Plex Mono',monospace;">{{ doc.abstractSourceLabel }}</div>
+      <div style="flex:1;"></div>
+      <a href="{{ doc.sourceUrl }}" target="_blank" rel="noopener" style="font-size:13px; padding:8px 16px; border-radius:8px; background:#6C5CE7; color:#fff; font-weight:600;" style-hover="background:#7d6ef0;">원문 보기 ↗</a>
+      <a href="{{ doc.pdfUrl }}" target="_blank" rel="noopener" style="font-size:13px; padding:8px 16px; border-radius:8px; border:1px solid #2a2c31; color:#c9cad0;" style-hover="border-color:#6C5CE7; color:#fff;">PDF</a>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:8px 18px; margin-bottom:24px;">
+      <div style="font-size:13px; color:#8a8d96;">연구책임자 <span style="color:#c9cad0;">{{ doc.leadResearcher }}{{ doc.leadResearcherAffilSuffix }}</span></div>
+      <div style="font-size:13px; color:#8a8d96;">공동연구자 <span style="color:#c9cad0;">{{ doc.coResearchers }}</span></div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;">
+      <sc-for list="{{ doc.keywords }}" as="kw" hint-placeholder-count="6">
+        <div style="font-size:12px; padding:5px 11px; border-radius:999px; background:#17181c; border:1px solid #2a2c31; color:#a9abb3;">#{{ kw }}</div>
+      </sc-for>
+    </div>
+
+    <div style="margin-bottom:28px;">
+      <div style="font-size:13px; font-weight:700; color:#8b7cf6; margin-bottom:8px; letter-spacing:0.02em;">전체 요약</div>
+      <div style="font-size:15px; line-height:1.8; color:#d5d6da;">{{ doc.overallSummary }}</div>
+    </div>
+
+    <div style="margin-bottom:24px; border:1px solid #1e1f24; border-radius:12px; background:#131418; overflow:hidden;">
+      <button onClick="{{ toggleToc }}" style="width:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; background:none; border:none; color:#e8e8ea; font-size:14px; font-weight:600; font-family:inherit; cursor:pointer;">
+        <span>목차</span>
+        <span style="color:#5a5d66; font-size:12px;">{{ tocToggleLabel }}</span>
+      </button>
+      <sc-if value="{{ tocOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:0 18px 18px; display:flex; flex-direction:column; gap:6px;">
+          <sc-for list="{{ doc.toc }}" as="item" hint-placeholder-count="5">
+            <div style="font-size:13px; color:#a9abb3; padding-left:2px;">{{ item }}</div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:22px; margin-bottom:8px;">
+      <div>
+        <div style="font-size:13px; font-weight:700; color:#8b7cf6; margin-bottom:8px; letter-spacing:0.02em;">연구 배경 및 목적</div>
+        <div style="font-size:15px; line-height:1.8; color:#d5d6da;">{{ doc.sections.background }}</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:700; color:#8b7cf6; margin-bottom:8px; letter-spacing:0.02em;">연구 방법</div>
+        <div style="font-size:15px; line-height:1.8; color:#d5d6da;">{{ doc.sections.method }}</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:700; color:#8b7cf6; margin-bottom:8px; letter-spacing:0.02em;">주요 결과</div>
+        <div style="font-size:15px; line-height:1.8; color:#d5d6da;">{{ doc.sections.results }}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ABSTRACT_SOURCE_LABEL = {
+  site_abstract: '사이트 초록 인용',
+  pdf_abstract: 'PDF 초록 인용',
+  pdf_analyzed: 'PDF 원문 분석',
+  page_analyzed: '페이지 원문 분석',
+  page_summary: '게시 내용 요약',
+};
+
+const DOC = {
+  mark: 'KERIS',
+  color: '#0984e3',
+  institutionName: '한국교육학술정보원 연구보고서',
+  date: '2025-11-20',
+  title: '생성형 AI 활용 교육 지원 방안 연구',
+  leadResearcher: '홍길동',
+  leadResearcherAffilSuffix: ' (한국교육학술정보원)',
+  coResearchers: '김민준, 이서연, 박도윤',
+  keywords: ['생성형AI', '초중등', '교수학습', 'AI디지털교과서', '교사연수'],
+  sourceUrl: 'https://keris.or.kr/main/ad/pblcte/selectPblcteRRList.do?mi=1138',
+  pdfUrl: 'https://keris.or.kr/example/download.pdf',
+  abstractSource: 'pdf_analyzed',
+  toc: ['1. 서론', '2. 선행 연구 검토', '3. 연구 방법', '4. 분석 결과', '5. 결론 및 제언'],
+  overallSummary: '본 연구는 초중등 교육 현장의 생성형 AI 활용 실태를 진단하고, 교사 역량 강화와 교육과정 개선을 위한 지원 방안을 제시한다. 설문·면담 조사를 바탕으로 현장 격차 요인을 분석하고 단계별 정책 제언을 도출했다.',
+  sections: {
+    background: '디지털 전환에 따라 초중등 교육 현장에서 SW·AI 소양 교육의 필요성이 커지고 있으나, 실제 교육과정 적용 수준과 현장 격차에 대한 실증 자료는 부족했다. 이에 본 연구는 현행 교육과정의 한계를 진단하고 개선 방향을 제시하는 것을 목적으로 한다.',
+    method: '전국 초중등 교사 및 학생을 대상으로 설문조사와 심층 면담을 병행하였으며, 국내외 관련 정책 문헌 및 교육과정 문서를 비교 분석하였다. 표본은 지역·학교급을 고려해 층화 추출하였다.',
+    results: '조사 결과 교사의 AI 활용 역량과 실제 수업 적용 사이에 뚜렷한 간극이 확인되었으며, 연수 체계 정비와 교육과정 내 실습 비중 확대가 시급한 과제로 도출되었다. 이를 바탕으로 단계별 지원 방안을 제언하였다.',
+  },
+};
+
+class Component extends DCLogic {
+  state = { tocOpen: true };
+  renderVals() {
+    return {
+      doc: { ...DOC, abstractSourceLabel: ABSTRACT_SOURCE_LABEL[DOC.abstractSource] },
+      tocOpen: this.state.tocOpen,
+      tocToggleLabel: this.state.tocOpen ? '접기 ▲' : '펼치기 ▼',
+      toggleToc: () => this.setState((s) => ({ tocOpen: !s.tocOpen })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
