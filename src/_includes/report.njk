@@ -53,26 +53,20 @@
     </div>
     {% endif %}
 
-    <!-- 전체 요약 -->
-    <div style="margin-bottom: 28px;">
-      <div style="font-size: 13px; font-weight: 700; color: #8b7cf6; margin-bottom: 8px; letter-spacing: 0.02em;">전체 요약</div>
-      <div style="font-size: 15px; line-height: 1.8; color: #d5d6da;">{{ abstract or content | safe }}</div>
-    </div>
-
-    <!-- 목차 (선택) -->
+    <!-- 목차 (아코디언) -->
     {% if table_of_contents %}
     <div style="margin-bottom: 24px; border: 1px solid #1e1f24; border-radius: 12px; background: #131418; overflow: hidden;">
       <button style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: none; border: none; color: #e8e8ea; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('span:last-child').textContent = this.nextElementSibling.style.display === 'none' ? '펼치기 ▼' : '접기 ▲';">
         <span>목차</span>
         <span style="color: #5a5d66; font-size: 12px;">펼치기 ▼</span>
       </button>
-      <div style="padding: 0 18px 18px; display: flex; flex-direction: column; gap: 6px; display: none;">
+      <div style="padding: 0 18px 18px; display: flex; flex-direction: column; gap: 6px; color: #a9abb3; font-size: 13px; display: none;">
         {{ table_of_contents | safe }}
       </div>
     </div>
     {% endif %}
 
-    <!-- 본문 섹션 -->
+    <!-- 본문 섹션 (마크다운 렌더링) -->
     <div style="display: flex; flex-direction: column; gap: 22px;">
       {{ content | safe }}
     </div>
