@@ -1,38 +1,97 @@
-<div style="max-width: 920px; margin: 0 auto; padding: 40px;">
-  <div class="breadcrumb">
-    <a href="{{ '/' | url }}">← 돌아가기</a>
-  </div>
+{% set institutionInfo = institution | instInfo(institutions) %}
+{% set isResearchType = institution in ['kice-research', 'kedi-research', 'kosac-research', 'keris-research', 'spri', 'keris-issue'] %}
 
-  <article class="report">
-    <h1>{{ title }}</h1>
+<div style="min-height: 100vh; background: #0b0c0e; color: #e8e8ea;">
+  <div style="max-width: 820px; margin: 0 auto; padding: 56px 40px;">
 
-    <dl class="report-meta">
-      <dt>연구책임자</dt>
-      <dd>{{ lead_researcher }}</dd>
-      <dt>게시일</dt>
-      <dd>{{ date | ymd }}</dd>
-      {% if keywords and keywords.length %}
-      <dt>키워드</dt>
-      <dd>
-        {% for keyword in keywords %}<span style="display: inline-block; background: #6C5CE7; color: #fff; padding: 0.25rem 0.75rem; border-radius: 0.25rem; margin-right: 0.5rem; font-size: 0.8rem;">{{ keyword }}</span>{% endfor %}
-      </dd>
-      {% endif %}
-    </dl>
+    <!-- 뒤로가기 -->
+    <div style="margin-bottom: 28px;">
+      <a href="{{ '/' | url }}" style="font-size: 13px; color: #8b7cf6;">← 돌아가기</a>
+    </div>
 
-    {% if table_of_contents %}
-    <div class="table-of-contents">
-      <h3>목차</h3>
-      <div>{{ table_of_contents | safe }}</div>
+    <!-- 기관 정보 및 제목 -->
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+      <div style="flex: 0 0 auto; width: 34px; height: 34px; border-radius: 8px; background: {{ institutionInfo.color }}22; border: 1px solid {{ institutionInfo.color }}55; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: {{ institutionInfo.color }}; font-family: 'IBM Plex Mono', monospace;">{{ institutionInfo.mark }}</div>
+      <div style="font-size: 14px; color: #c9cad0;">{{ institutionInfo.name }}</div>
+      <div style="width: 3px; height: 3px; border-radius: 50%; background: #3a3c42;"></div>
+      <div style="font-size: 13px; color: #5a5d66; font-family: 'IBM Plex Mono', monospace;">{{ date | ymd }}</div>
+    </div>
+
+    <h1 style="font-size: 26px; font-weight: 700; line-height: 1.4; margin: 0 0 18px; color: #f2f2f3;">{{ title }}</h1>
+
+    <!-- 요약 출처 및 링크 -->
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid #1e1f24;">
+      <div style="font-size: 11px; padding: 4px 9px; border-radius: 6px; background: #17181c; border: 1px solid #2a2c31; color: #8a8d96; font-family: 'IBM Plex Mono', monospace;">
+        {% if abstract_source == 'site_abstract' %}사이트 초록 인용
+        {% elif abstract_source == 'pdf_abstract' %}PDF 초록 인용
+        {% elif abstract_source == 'pdf_analyzed' %}PDF 원문 분석
+        {% elif abstract_source == 'page_analyzed' %}페이지 원문 분석
+        {% elif abstract_source == 'page_summary' %}게시 내용 요약
+        {% else %}요약{% endif %}
+      </div>
+      <div style="flex: 1;"></div>
+      <a href="{{ source_url }}" target="_blank" rel="noopener" style="font-size: 13px; padding: 8px 16px; border-radius: 8px; background: #6C5CE7; color: #fff; font-weight: 600;">원문 보기 ↗</a>
+      {% if pdf_url %}<a href="{{ pdf_url }}" target="_blank" rel="noopener" style="font-size: 13px; padding: 8px 16px; border-radius: 8px; border: 1px solid #2a2c31; color: #c9cad0;">PDF</a>{% endif %}
+    </div>
+
+    {% if isResearchType %}
+    <!-- 연구보고서형 -->
+
+    {% if lead_researcher or co_researchers %}
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 24px;">
+      {% if lead_researcher %}<div style="font-size: 13px; color: #8a8d96;">연구책임자 <span style="color: #c9cad0;">{{ lead_researcher }}</span></div>{% endif %}
+      {% if co_researchers %}<div style="font-size: 13px; color: #8a8d96;">공동연구자 <span style="color: #c9cad0;">{{ co_researchers }}</span></div>{% endif %}
     </div>
     {% endif %}
 
-    <div class="report-body">
+    <!-- 키워드 -->
+    {% if keywords and keywords.length %}
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;">
+      {% for keyword in keywords %}
+      <div style="font-size: 12px; padding: 5px 11px; border-radius: 999px; background: #17181c; border: 1px solid #2a2c31; color: #a9abb3;">#{{ keyword }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- 전체 요약 -->
+    <div style="margin-bottom: 28px;">
+      <div style="font-size: 13px; font-weight: 700; color: #8b7cf6; margin-bottom: 8px; letter-spacing: 0.02em;">전체 요약</div>
+      <div style="font-size: 15px; line-height: 1.8; color: #d5d6da;">{{ abstract or content | safe }}</div>
+    </div>
+
+    <!-- 목차 (선택) -->
+    {% if table_of_contents %}
+    <div style="margin-bottom: 24px; border: 1px solid #1e1f24; border-radius: 12px; background: #131418; overflow: hidden;">
+      <button style="width: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: none; border: none; color: #e8e8ea; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('span:last-child').textContent = this.nextElementSibling.style.display === 'none' ? '펼치기 ▼' : '접기 ▲';">
+        <span>목차</span>
+        <span style="color: #5a5d66; font-size: 12px;">펼치기 ▼</span>
+      </button>
+      <div style="padding: 0 18px 18px; display: flex; flex-direction: column; gap: 6px; display: none;">
+        {{ table_of_contents | safe }}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- 본문 섹션 -->
+    <div style="display: flex; flex-direction: column; gap: 22px;">
       {{ content | safe }}
     </div>
 
-    <div class="report-links">
-      <a href="{{ source_url }}" target="_blank" rel="noopener">원문 보기</a>
-      {% if pdf_url %}<a href="{{ pdf_url }}" target="_blank" rel="noopener">PDF 다운로드</a>{% endif %}
+    {% else %}
+    <!-- 동향형 (국제소식/국가별 동향) -->
+
+    {% if region %}
+    <div style="border-left: 3px solid {{ institutionInfo.color }}; padding: 4px 0 4px 20px; margin-bottom: 28px;">
+      <div style="display: inline-block; font-size: 12px; padding: 4px 10px; border-radius: 6px; background: {{ institutionInfo.color }}1a; color: {{ institutionInfo.color }}; font-weight: 600; margin-bottom: 12px;">{{ region }}</div>
+      <div style="font-size: 15px; line-height: 1.85; color: #d5d6da;">{{ content | safe }}</div>
     </div>
-  </article>
+    {% else %}
+    <div style="font-size: 15px; line-height: 1.85; color: #d5d6da; margin-bottom: 28px;">
+      {{ content | safe }}
+    </div>
+    {% endif %}
+
+    {% endif %}
+
+  </div>
 </div>

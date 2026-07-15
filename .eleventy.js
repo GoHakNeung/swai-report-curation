@@ -51,6 +51,12 @@ module.exports = function (eleventyConfig) {
     return JSON.stringify(serialized);
   });
 
+  // 기관 코드로 기관 정보 조회
+  eleventyConfig.addFilter("instInfo", (code, institutions) => {
+    const inst = (institutions || []).find(i => i.code === code);
+    return inst || {};
+  });
+
   // 기관 코드로 기관 이름 조회
   eleventyConfig.addFilter("instName", (code, institutions) => {
     const inst = (institutions || []).find(i => i.code === code);
