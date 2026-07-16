@@ -69,6 +69,7 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
+    pathPrefix: "/swai-report-curation/",
     dir: {
       input: "src",
       includes: "_includes",
