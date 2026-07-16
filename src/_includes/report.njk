@@ -1,8 +1,10 @@
+---
+layout: base.njk
+---
 {% set institutionInfo = institution | instInfo(institutions) %}
 {% set isResearchType = institution in ['kice-research', 'kedi-research', 'kosac-research', 'keris-research', 'spri', 'keris-issue'] %}
 
-<div style="min-height: 100vh; background: #0b0c0e; color: #e8e8ea;">
-  <div style="max-width: 820px; margin: 0 auto; padding: 56px 40px;">
+<div style="max-width: 820px; margin: 0 auto; padding: 56px 40px;">
 
     <!-- 뒤로가기 -->
     <div style="margin-bottom: 28px;">
@@ -87,5 +89,4 @@
 
     {% endif %}
 
-  </div>
 </div>
