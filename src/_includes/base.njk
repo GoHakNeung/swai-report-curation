@@ -477,6 +477,179 @@
     .breadcrumb a {
       color: #8b7cf6;
     }
+
+    /* 기관 상세 페이지 헤더 */
+    .inst-detail-header {
+      max-width: 920px;
+      margin: 0 auto 40px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #131418;
+      border-radius: 12px;
+      border: 1px solid #1e1f24;
+    }
+
+    .inst-detail-header .inst-mark {
+      width: 60px;
+      height: 60px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .inst-info {
+      flex: 1;
+    }
+
+    .inst-detail-header .inst-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #e8e8ea;
+    }
+
+    .inst-link {
+      font-size: 13px;
+      color: #8a8d96;
+      border: 1px solid #2a2c31;
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .inst-link:hover {
+      color: #a89bff;
+      border-color: #6C5CE7;
+    }
+
+    /* 기관 보고서 목록 */
+    .inst-reports {
+      max-width: 920px;
+      margin: 0 auto 40px;
+    }
+
+    .report-list-detail {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .report-list-detail li {
+      border-bottom: 1px solid #1e1f24;
+    }
+
+    .report-list-detail li:last-child {
+      border-bottom: none;
+    }
+
+    .report-list-detail a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px;
+      color: #c9cad0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .report-list-detail a:hover {
+      background: rgba(139, 124, 246, 0.08);
+      color: #a89bff;
+    }
+
+    .report-list-detail .report-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: #e8e8ea;
+    }
+
+    .report-list-detail .report-meta {
+      font-size: 12px;
+      color: #8a8d96;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .report-list-detail .lead-researcher {
+      color: #a89bff;
+    }
+
+    /* 페이지네이션 */
+    .pagination {
+      max-width: 920px;
+      margin: 0 auto 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .pagination-numbers {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pagination-link {
+      font-size: 13px;
+      color: #8a8d96;
+      border: 1px solid #2a2c31;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .pagination-link:hover {
+      color: #a89bff;
+      border-color: #6C5CE7;
+    }
+
+    .pagination-number {
+      font-size: 13px;
+      color: #8a8d96;
+      border: 1px solid #2a2c31;
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .pagination-number:hover {
+      color: #a89bff;
+      border-color: #6C5CE7;
+    }
+
+    .pagination-current {
+      font-size: 13px;
+      color: #e8e8ea;
+      background: #6C5CE7;
+      border: 1px solid #6C5CE7;
+      padding: 8px 10px;
+      border-radius: 6px;
+      min-width: 36px;
+      text-align: center;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .back-link {
+      max-width: 920px;
+      margin: 40px auto 0;
+      padding: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #8a8d96;
+    }
+
+    .back-link a {
+      color: #8b7cf6;
+    }
+
+    .back-link a:hover {
+      color: #a89bff;
+    }
   </style>
 </head>
 <body>

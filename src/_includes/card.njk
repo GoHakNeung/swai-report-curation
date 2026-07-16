@@ -20,6 +20,6 @@
       </li>
       {% endfor %}
     </ul>
-    {% if instReports.length > 5 %}<a class="more-btn" href="{{ institution.list_url }}" target="_blank" rel="noopener">더보기 →</a>{% endif %}
+    {% if instReports.length > 5 %}<a class="more-btn" href="/institutions/{{ institution.code }}/">더보기 →</a>{% endif %}
   {% endif %}
 </section>
