@@ -58,6 +58,7 @@ _site/                  # 빌드 결과물 (git 제외)
 institution: keris-research      # institutions.json의 code와 정확히 일치
 title: "생성형 AI 활용 교육 지원 방안 연구"
 lead_researcher: 홍길동
+lead_affiliation: 한국교육학술정보원  # 선택. 연구책임자 소속. 원문에 명시된 경우만
 date: 2025-11-20                  # 게시 연도 기준 yyyy-mm-dd
 source_url: https://...          # 원문 상세 페이지 (고유 키, 필수)
 pdf_url: https://...             # 원본 PDF 직링크 (선택)
@@ -108,6 +109,9 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
 
 **Front Matter 필드 매핑**:
 - `co_researchers`: 공동연구자 (연구보고서형만)
+- `lead_affiliation`: 연구책임자 소속 (연구보고서형만, 선택)
+  - 상세 페이지와 기관 목록 페이지에서 `홍길동 (소속)` 형식으로 표시된다.
+  - 원문/사이트에 소속이 명시된 경우에만 채운다. 기관 코드로 추측하지 않는다.
 - `region`: 지역/국가/국제기구명 (동향형만)
 
 ## 마크다운 작성 구조 (보고서 본문)

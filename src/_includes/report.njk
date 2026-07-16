@@ -43,7 +43,7 @@ layout: base.njk
 
     {% if lead_researcher or co_researchers %}
     <div style="display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 24px;">
-      {% if lead_researcher %}<div style="font-size: 13px; color: #8a8d96;">연구책임자 <span style="color: #c9cad0;">{{ lead_researcher }}</span></div>{% endif %}
+      {% if lead_researcher %}<div style="font-size: 13px; color: #8a8d96;">연구책임자 <span style="color: #c9cad0;">{{ lead_researcher }}{% if lead_affiliation %} ({{ lead_affiliation }}){% endif %}</span></div>{% endif %}
       {% if co_researchers %}<div style="font-size: 13px; color: #8a8d96;">공동연구자 <span style="color: #c9cad0;">{{ co_researchers }}</span></div>{% endif %}
     </div>
     {% endif %}

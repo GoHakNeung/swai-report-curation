@@ -29,9 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
       url: '{{ report.url | url }}',
       title: '{{ report.data.title }}',
       lead_researcher: '{{ report.data.lead_researcher or "" }}',
+      lead_affiliation: '{{ report.data.lead_affiliation or "" }}',
       date: '{{ report.data.date | ymd }}'
     }{{ "," if not loop.last }}{% endfor %}
   ];
+
+  function formatAuthor(report) {
+    if (!report.lead_researcher) return '-';
+    if (!report.lead_affiliation) return report.lead_researcher;
+    return `${report.lead_researcher} (${report.lead_affiliation})`;
+  }
 
   let currentPage = 1;
   const totalPages = Math.ceil(reportsData.length / pageSize);
@@ -50,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <td class="report-title-cell">
                 <a href="${report.url}">${report.title}</a>
               </td>
-              <td class="report-author-cell">${report.lead_researcher || '-'}</td>
+              <td class="report-author-cell">${formatAuthor(report)}</td>
               <td class="report-date-cell">${report.date}</td>
             </tr>
           `).join('')}
