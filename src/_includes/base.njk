@@ -531,48 +531,56 @@
     }
 
     .report-list-detail {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
     }
 
-    .report-list-detail li {
+    .report-list-detail tbody tr {
       border-bottom: 1px solid #1e1f24;
+      transition: background 0.2s;
     }
 
-    .report-list-detail li:last-child {
+    .report-list-detail tbody tr:hover {
+      background: rgba(139, 124, 246, 0.08);
+    }
+
+    .report-list-detail tbody tr:last-child {
       border-bottom: none;
     }
 
-    .report-list-detail a {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 16px;
-      color: #c9cad0;
-      transition: background 0.2s, color 0.2s;
+    .report-list-detail td {
+      padding: 12px 16px;
+      vertical-align: middle;
     }
 
-    .report-list-detail a:hover {
-      background: rgba(139, 124, 246, 0.08);
+    .report-title-cell {
+      flex: 1;
+    }
+
+    .report-title-cell a {
+      color: #c9cad0;
+      transition: color 0.2s;
+    }
+
+    .report-title-cell a:hover {
       color: #a89bff;
     }
 
-    .report-list-detail .report-title {
-      font-size: 15px;
-      font-weight: 500;
-      color: #e8e8ea;
-    }
-
-    .report-list-detail .report-meta {
-      font-size: 12px;
+    .report-author-cell {
+      width: 150px;
       color: #8a8d96;
       font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      text-align: center;
     }
 
-    .report-list-detail .lead-researcher {
-      color: #a89bff;
+    .report-date-cell {
+      width: 100px;
+      color: #5a5d66;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      text-align: right;
     }
 
     /* 페이지네이션 */

@@ -43,19 +43,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const reportsList = document.getElementById('reportsList');
     reportsList.innerHTML = `
-      <ul class="report-list-detail">
-        ${pageReports.map(report => `
-          <li>
-            <a href="${report.url}">
-              <span class="report-title">${report.title}</span>
-              <span class="report-meta">
-                ${report.lead_researcher ? `<span class="lead-researcher">${report.lead_researcher}</span> · ` : ''}
-                <time>${report.date}</time>
-              </span>
-            </a>
-          </li>
-        `).join('')}
-      </ul>
+      <table class="report-list-detail">
+        <tbody>
+          ${pageReports.map(report => `
+            <tr>
+              <td class="report-title-cell">
+                <a href="${report.url}">${report.title}</a>
+              </td>
+              <td class="report-author-cell">${report.lead_researcher || '-'}</td>
+              <td class="report-date-cell">${report.date}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
     `;
 
     // 페이지네이션
