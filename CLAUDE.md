@@ -290,6 +290,25 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
   유니코드 매핑이 없어 글리프 ID만 나오는 경우(예: RR2022-01)다. OCR 수단이 없으면
   근거를 얻을 수 없으므로 건너뛰고 사용자에게 알린다.
 
+**SPRi 소프트웨어정책연구소 (5)**
+- **SW·AI 전문 기관이라 발간물 전부가 관심 키워드에 해당한다.** KICE·KEDI 같은
+  전 교과 대상 기관과 달리 키워드 필터링이 불필요하므로 **최신순으로 선정**한다.
+- 사이트 활용법 (2026-07 확인)
+  - 목록: `https://www.spri.kr/posts?data_page=<n>&code=data_all&study_type=&board_type=research`
+    행에서 `/posts/view/<vid>`, `bg_c2`(보고서번호 RE-xxx), `s_authors=`(저자), 날짜를 얻는다.
+  - 상세(= `source_url`): `https://www.spri.kr/posts/view/<vid>?code=research&board_type=research`
+  - **상세에 구조화된 요약문이 그대로 있다.** `tab_1` = 요약문, `tab_2` = 목차.
+    요약문은 `1. 제목 / 2. 연구 목적 및 필요성 / 3. 연구의 구성 및 범위 /
+    4. 연구 내용 및 결과 / 5. 정책적 활용 내용 / 6. 기대효과` 구성이라
+    본문 4개 절에 그대로 대응된다. → `abstract_source: site_abstract`
+    (PDF를 열 필요가 없다. 파싱 시 `tab_1`~`tab_2` 구간, `tab_2`~`footer` 구간으로
+     경계를 끊어야 푸터·뉴스레터 문구가 섞이지 않는다.)
+  - **PDF는 안정적인 GET 직링크가 있다**: `https://www.spri.kr/download/<file_no>`.
+    `file_no` 는 상세의 `file_down('<file_no>')` 에서 얻는다(vid 와 다른 번호다).
+    → `pdf_url` 을 채운다.
+  - 저자 소속은 `산업정책연구실 책임연구원` 처럼 SPRi 내부 직위다. 발행 기관 소속이므로
+    `lead_affiliation` 은 비운다.
+
 **이슈리포트 (6)**
 - 위 관심 키워드 관련 자료만 선택
 
