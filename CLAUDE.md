@@ -372,10 +372,20 @@ for img in out/p-*.png; do tesseract "$img" - -l kor --psm 6 >> out.txt; done
 **이슈리포트 (6)**
 - 위 관심 키워드 관련 자료만 선택
 
-**카드뉴스 (7)**
-- 제목만 수집 (.md 파일 생성, 요약/키워드 불필요)
-- 각 카드뉴스당 1개의 .md 파일 생성
-- 제목을 클릭하면 해당 기관 사이트로 이동
+**카드뉴스 (7) — 교육과정평가원 카드뉴스**
+- 제목만 수집 (.md 파일 생성, 요약/키워드 불필요). front matter 는
+  institution/title/date/source_url 만. 저자 정보 없음.
+- **브리프(8)와 동일하게** institutions.json 의 kice-cardnews 에
+  `"title_external": true` 가 있어 제목 클릭 시 상세 페이지가 아니라
+  기관 사이트(source_url, 새 탭)로 바로 이동한다. (동일 메커니즘: [[브리프 규칙]])
+- 사이트 활용법 (2026-07 확인)
+  - 목록(갤러리형, 정적 HTML): `.../cardNewsBoard/list.do?boardId=1&s=kice&m=030216&page=<n>`
+    (페이지 파라미터는 `page`, `pageIndex` 아님). `<li>` 의 `<img alt="...">` 가 제목,
+    `detail/view.do?seq=<seq>` 가 seq, 이미지 경로 `/upload/cardNewsBoard/1/YYYY/MM/<seq>/`
+    에서 발행 연·월을 얻는다(목록에 별도 날짜 표기 없음).
+  - **개별 카드뉴스 URL(= source_url, GET)**: `.../cardNewsBoard/view.do?seq=<seq>&m=030216&s=kice`
+  - 전 교과 대상이라 관심 키워드 필터링 필요. SW/AI/디지털 카드뉴스는 많지 않으니
+    지능정보사회·컴퓨터 기반 평가 등 인접 주제까지 포함해 채운다.
 
 **브리프 (8) — 교육개발원 KEDI Brief**
 - 제목만 수집 (.md 파일 생성, 요약/키워드 불필요)

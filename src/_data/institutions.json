@@ -54,6 +54,7 @@
     "mark": "KICE",
     "color": "#6C5CE7",
     "order": 7,
+    "title_external": true,
     "list_url": "https://www.kice.re.kr/cardNewsBoard/list.do?boardId=1&s=kice&m=030216"
   },
   {
