@@ -262,6 +262,34 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
   PDF 텍스트 추출은 `pip3 install --user pypdf` 후 `PdfReader(...).extract_text()`.
   (내려받은 PDF는 스크래치패드에만 두고 저장소에 커밋하지 않는다.)
 
+**KEDI 연구보고서 사이트 활용법 (2026-07 확인)**
+- 목록 검색은 **`plTitl`** (제목 검색). `q` 는 필터링되지 않으니 쓰지 말 것.
+  ```
+  https://www.kedi.re.kr/khome/main/research/listPubForm.do?plTitl=인공지능&maxResults=100
+  ```
+- 행에서 `selectPubFormFn('<plNum0>')` 로 식별자를, `downloadAction(...)` 인자로 PDF
+  정보를 얻는다. `<td class="tfile">` 이 비어 있으면 **PDF 미첨부**다.
+- 상세: `https://www.kedi.re.kr/khome/main/research/selectPubForm.do?plNum0=<plNum0>` (= `source_url`)
+- **상세 페이지의 '연구 요약' 필드에는 초록이 아니라 목차가 들어 있다.** 즉 사이트에는
+  초록이 없다. → 요약은 **PDF 원문**을 읽어 작성하고 `abstract_source: pdf_analyzed`.
+- **연구책임자·연구진은 인라인 JS에 있다.** 화면의 "정보를 불러오지 못했습니다"는
+  `<noscript>` 폴백이다. `researchSplt('이름|아이디|소속:^:...')` 를 파싱한다.
+- **PDF는 POST로만 받을 수 있다**(GET·정적 경로 모두 실패). 안정적 직링크가 없으므로
+  `pdf_url` 은 비우고 `source_url` 만 연결한다. 분석용 내려받기는 아래처럼 한다.
+  ```
+  curl -X POST https://www.kedi.re.kr/khome/main/research/downloadPubFileAction.do \
+    --data-urlencode "plNum0=.." --data-urlencode "pcPart=.." --data-urlencode "pcCode=.." \
+    --data-urlencode "plTitl=.." --data-urlencode "origName=.." --data-urlencode "saveName=.." \
+    --data-urlencode "savePath=.." --data-urlencode "pfType=P" -o out.pdf
+  ```
+- PDF 앞부분의 **'연구 요약'** 섹션이 배경·방법·결과를 그대로 담고 있어 요약의 근거로 쓴다.
+- 구분(kind)에 `기본연구`(RR), `수탁연구`(CRR/CRM), `이슈페이`(IP/CIP), `연구자료`(RM),
+  `현안보고` 등이 섞여 있다. **연구보고서로 볼 것은 RR·CRR·IP/CIP** 이고, 포럼 자료집·
+  기획기사·사업 결과보고서·국제회의 자료(RM/CRM 다수)는 연구가 아니므로 제외한다.
+- 일부 오래된 PDF는 텍스트를 못 얻는다. 스캔 이미지(예: CRR2022-13)이거나 폰트에
+  유니코드 매핑이 없어 글리프 ID만 나오는 경우(예: RR2022-01)다. OCR 수단이 없으면
+  근거를 얻을 수 없으므로 건너뛰고 사용자에게 알린다.
+
 **이슈리포트 (6)**
 - 위 관심 키워드 관련 자료만 선택
 
