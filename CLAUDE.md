@@ -309,6 +309,37 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
   - 저자 소속은 `산업정책연구실 책임연구원` 처럼 SPRi 내부 직위다. 발행 기관 소속이므로
     `lead_affiliation` 은 비운다.
 
+**KOSAC 한국과학창의재단 사이트 활용법 (2026-07 확인)**
+- 과학·수학·융합교육 전반을 다루므로 **관심 키워드 필터링 필요**.
+- 목록: `https://www.kosac.re.kr/menus/244/boards/457/posts?page=<n>` (제목·등록일)
+- 상세(= `source_url`): `https://www.kosac.re.kr/menus/244/boards/457/posts/<pid>`
+- Next.js 사이트라 데이터가 **두 곳**에 있다. 둘 다 보고 긴 쪽을 쓴다.
+  - `<div hidden id="S:0">` 의 SSR 폴백 HTML → `view_con` 에 HTML 서식 요약
+  - flight 페이로드의 `{\"children\":\"연구요약\"}...{\"children\":\"...\"}` → 평문 요약
+- **PDF 직링크가 flight 페이로드의 `fileUrl` 에 있다**(`https://cdn.kosac.re.kr/files/cms/attach/...`).
+  화면의 다운로드 `href` 는 비어 있으니 페이로드에서 뽑는다. → `pdf_url` 채움.
+- 사이트 키워드는 `keyword_list` 의 `#` 항목에 있다(있는 건도, 없는 건도 있음).
+- 연구요약이 비어 있는 건이 적지 않다. 그때는 PDF를 분석한다(`pdf_analyzed`).
+  KOSAC PDF 앞부분에는 대개 **'보고서 초록'**(연구 목적/연구방법/연구 성과/기대효과/색인어)이 있다.
+- 연구책임자 필드에 `변정호(강원대학교 과학교육학부)` 처럼 외부 소속이 함께 오면
+  `lead_affiliation` 으로 분리한다. 괄호가 중첩된 `방준성((주)와이매틱스)` 형태를
+  깨뜨리지 않도록 마지막 닫는 괄호까지 잡아야 한다.
+
+**KERIS 한국교육학술정보원 사이트 활용법 (2026-07 확인)**
+- 교육 ICT 외에 **RISS·대학도서관·학술지 사업 보고서도 섞여 있어** 필터링 필요.
+- 목록: `https://keris.or.kr/main/ad/pblcte/selectPblcteRRList.do?mi=1138&currPage=<n>`
+  행에 `pblcteView('<seq>')`, 연구책임자, 연구진, 발행년도, `listFileDown data-id` 가 있다.
+- 상세(= `source_url`): `.../selectPblcteRRInfo.do?mi=1138&pblcteSeq=<seq>` (GET 가능)
+  - **키워드**(`키워드` 필드), **목차**(`<h3>목차</h3>` 다음 `div.txt_wrap`, `<br>` 구분),
+    **저자소개**(외부 소속 포함)가 있으나 **초록은 없다.**
+- **PDF는 GET 직링크**: `https://keris.or.kr/common/fileDownload.do?fileKey=<fileKey>&dwlTy=pblcte`
+  (`fileKey` 는 상세 HTML 에 있음). → `pdf_url` 채움. 초록은 PDF 앞부분의
+  **'요 약'** 절에서 얻는다(`abstract_source: pdf_abstract`).
+  ※ 목차의 '요 약'과 헷갈리지 않게, 점선(`···`)이 적고 한글이 많은 지점을 골라야 한다.
+- **스캔 이미지 PDF가 많다.** `pdffonts` 결과가 비어 있으면 텍스트가 없다는 뜻이니
+  OCR 없이는 근거를 얻을 수 없다. 건너뛰고 다음 후보로 대체한다.
+- 발행년도만 제공하고 게시일이 없다. `date` 는 `<발행년도>-01-01` 로 둔다.
+
 **이슈리포트 (6)**
 - 위 관심 키워드 관련 자료만 선택
 
