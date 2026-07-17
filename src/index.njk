@@ -32,9 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const resultLabel = document.getElementById('resultLabel');
   const resultsList = document.getElementById('resultsList');
 
+  const externalInsts = [{% for inst in institutions %}{% if inst.title_external %}'{{ inst.code }}'{{ "," if not loop.last }}{% endif %}{% endfor %}];
+
   const reportsData = [
     {% for report in collections.reports %}{
-      url: '{{ report.url }}',
+      url: '{{ report.url | url }}',
+      source_url: '{{ report.data.source_url }}',
       title: '{{ report.data.title }}',
       institution: '{{ report.data.institution }}',
       date: '{{ report.data.date | ymd }}',
@@ -85,9 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultHTML = results.map(report => {
       const inst = institutionsData.find(i => i.code === report.institution);
       const instName = inst ? inst.name : '미분류';
+      const isExternal = externalInsts.includes(report.institution);
+      const href = isExternal ? report.source_url : report.url;
+      const attrs = isExternal ? ' target="_blank" rel="noopener"' : '';
       return `
         <div class="search-result-item">
-          <a href="${report.url}">
+          <a href="${href}"${attrs}>
             <span class="search-result-inst">${instName}</span>
             <span class="search-result-title">${report.title}</span>
             <span class="search-result-date">${report.date}</span>

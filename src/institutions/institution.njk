@@ -22,9 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const instCode = '{{ institution.code }}';
   const pageSize = 10;
 
+  const titleExternal = {{ "true" if institution.title_external else "false" }};
+
   const reportsData = [
     {% for report in collections.reports | byInstitution(institution.code, 999) %}{
       url: '{{ report.url | url }}',
+      source_url: '{{ report.data.source_url }}',
       title: '{{ report.data.title }}',
       lead_researcher: '{{ report.data.lead_researcher or "" }}',
       lead_affiliation: '{{ report.data.lead_affiliation or "" }}',
@@ -53,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
           ${pageReports.map(report => `
             <tr>
               <td class="report-title-cell">
-                <a href="${report.url}">${report.title}</a>
+                ${titleExternal
+                  ? `<a href="${report.source_url}" target="_blank" rel="noopener">${report.title}</a>`
+                  : `<a href="${report.url}">${report.title}</a>`}
               </td>
               <td class="report-author-cell">${formatAuthor(report)}</td>
               <td class="report-date-cell">${report.date}</td>

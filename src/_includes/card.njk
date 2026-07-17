@@ -13,10 +13,17 @@
     <ul class="report-list">
       {% for report in instReports | limit(5) %}
       <li>
+        {% if institution.title_external %}
+        <a href="{{ report.data.source_url }}" target="_blank" rel="noopener">
+          <span class="report-title">{{ report.data.title }}</span>
+          <span class="report-date">{{ report.data.date | ymd }}</span>
+        </a>
+        {% else %}
         <a href="{{ report.url | url }}">
           <span class="report-title">{{ report.data.title }}</span>
           <span class="report-date">{{ report.data.date | ymd }}</span>
         </a>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>

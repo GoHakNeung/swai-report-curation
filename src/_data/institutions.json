@@ -45,6 +45,7 @@
     "mark": "KEDI",
     "color": "#00b894",
     "order": 8,
+    "title_external": true,
     "list_url": "https://www.kedi.re.kr/khome/main/research/kediBrief.do"
   },
   {

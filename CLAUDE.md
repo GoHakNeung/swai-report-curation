@@ -377,10 +377,27 @@ for img in out/p-*.png; do tesseract "$img" - -l kor --psm 6 >> out.txt; done
 - 각 카드뉴스당 1개의 .md 파일 생성
 - 제목을 클릭하면 해당 기관 사이트로 이동
 
-**브리프 (8)**
+**브리프 (8) — 교육개발원 KEDI Brief**
 - 제목만 수집 (.md 파일 생성, 요약/키워드 불필요)
-- 각 브리프당 1개의 .md 파일 생성
-- 제목을 클릭하면 해당 기관 사이트로 이동
+- 각 브리프당 1개의 .md 파일 생성. front matter 는 institution/title/
+  lead_researcher(저자)/date/source_url 만. 본문·keywords·abstract_source 없음.
+- **제목 클릭 시 상세 페이지가 아니라 해당 기관 사이트(source_url)로 바로 이동한다.**
+  institutions.json 의 kedi-brief 에 `"title_external": true` 플래그가 있고,
+  card.njk·institution.njk·index.njk(검색)가 이 플래그를 보고 제목을 source_url 로
+  (새 탭) 연결한다. 브리프 저자는 KEDI 소속이므로 lead_affiliation 은 비운다.
+- 사이트 활용법 (2026-07 확인)
+  - 목록은 JS(XHR)로 로드된다. `kediBriefData.do` 에 POST 한다.
+    ```
+    curl -X POST https://www.kedi.re.kr/khome/main/research/kediBriefData.do \
+      -H "X-Requested-With: XMLHttpRequest" \
+      --data "maxResults=15&currentPage=<n>&board_sq_no=41&selectTp=0&isReply=0&stored_file_type=1&doc_use_yn=N&editor_use_yn=Y&prvw_use_yn=N&srchType=1"
+    ```
+    행에서 `goReadSelect('<sq>')` 의 sq, 제목(`[YYYY년 N호 | 저자] 본제목`), 날짜,
+    `downloadAction(...)` 의 PDF 정보를 얻는다. 관심 키워드 필터링 필요(전 교육 주제).
+  - **개별 브리프 URL(= source_url, GET 가능)**:
+    `.../selectKediBriefForm.do?article_sq_no=<sq>&board_sq_no=41&maxResults=15&currentPage=1&selectTp=0&isReply=0`
+  - 목록 제목은 길면 잘린다(`...`). 정확한 전체 제목은 PDF 표지에서 확인한다.
+    PDF 도 POST(`downFileAction.do`)로만 받는다. 표지가 이미지라 OCR이 필요한 건도 있다.
 
 **한국과학창의재단 동향리포트 (9)**
 - 해당 기관의 동향리포트 목록에서 자료 수집
