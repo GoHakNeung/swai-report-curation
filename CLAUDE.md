@@ -336,9 +336,24 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
   (`fileKey` 는 상세 HTML 에 있음). → `pdf_url` 채움. 초록은 PDF 앞부분의
   **'요 약'** 절에서 얻는다(`abstract_source: pdf_abstract`).
   ※ 목차의 '요 약'과 헷갈리지 않게, 점선(`···`)이 적고 한글이 많은 지점을 골라야 한다.
-- **스캔 이미지 PDF가 많다.** `pdffonts` 결과가 비어 있으면 텍스트가 없다는 뜻이니
-  OCR 없이는 근거를 얻을 수 없다. 건너뛰고 다음 후보로 대체한다.
+- **스캔 이미지 PDF가 많다.** `pdftotext` 가 빈 결과를 내거나 `pdffonts` 에 폰트가
+  없으면 텍스트 레이어가 없다는 뜻이다. 이때는 아래 OCR 절차를 쓴다.
 - 발행년도만 제공하고 게시일이 없다. `date` 는 `<발행년도>-01-01` 로 둔다.
+
+**스캔 PDF OCR 절차 (poppler + tesseract, 2026-07 도입)**
+```
+brew install poppler tesseract tesseract-lang   # 이미 설치됨
+pdftoppm -r 300 -gray -f 1 -l 14 -png in.pdf out/p    # 앞 14쪽만 300dpi 변환
+for img in out/p-*.png; do tesseract "$img" - -l kor --psm 6 >> out.txt; done
+```
+- 요약/초록은 대개 앞 14쪽 안에 있으므로 전체를 OCR할 필요가 없다(200쪽 OCR은 매우 느리다).
+- 요약이 앞에 없으면 목차를 보고 위치를 잡는다. 국문초록이 **보고서 끝**에 있는 경우
+  (참고문헌 뒤)도 있고, 실태조사류처럼 **요약 자체가 없어** 서론을 써야 하는 경우도 있다.
+- **OCR은 한글은 잘 읽지만 영문·숫자를 자주 깨뜨린다.** `AI`→`ㅅ1`/`41`, `RAG`→`1143`
+  같은 오인식이 흔하다. 한글 서술로 의미를 확인하고 영문 약어·수치는 그대로 옮기지 말고
+  문맥으로 복원하거나 확실하지 않으면 쓰지 않는다.
+- `abstract_source`: PDF의 '요 약' 절을 OCR한 경우 `pdf_abstract`,
+  요약이 없어 서론 등을 분석한 경우 `pdf_analyzed`.
 
 **이슈리포트 (6)**
 - 위 관심 키워드 관련 자료만 선택
