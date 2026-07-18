@@ -220,6 +220,19 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
 - 교육과정평가원에서 제공하는 PDF 파일(국제교육동향 보고서) 수집
 - PDF에서 텍스트 추출 및 원문 내용 분석
 - 추출한 원문을 기반으로 정확한 요약 작성
+- 사이트 활용법 (2026-07 확인)
+  - 목록: `.../boardCnts/list.do?boardID=5000064&m=030207&s=kice&page=<n>`
+    (페이지 파라미터는 `page`). 각 `<tr>` 에 `goView('5000064','<seq>')` 의 seq,
+    제목(`[국가] 제목` 형태), `fn_fileDown('<fileKey>')` 의 PDF 다운로드 키가 있다.
+  - 상세(= `source_url`): `.../boardCnts/view.do?boardID=5000064&boardSeq=<seq>&m=030207&s=kice`
+    (목록에 fileKey 가 안 보이면 상세 HTML 에서 `fn_fileDown` 을 뽑는다.)
+  - **PDF 다운로드는 POST**: `.../boardCnts/fileDown.do` 에 `fileSeq=<fileKey>` 로 POST.
+    PDF 첫 줄에 `국제교육동향 / 20XX년 N호 / 발행일`, 이후 '배경'·'주요내용'에 본문이 있다.
+    → `abstract_source: pdf_analyzed`. PDF 는 안정적 GET 직링크가 없어 `pdf_url` 은 비운다.
+  - **호(號)마다 국가 특집 주제가 다르다.** 최신호가 SW·AI 와 무관한 주제(예: 민주시민
+    교육)일 수 있으니, 관심 키워드로 게시판을 거슬러 올라가 AI·디지털 주제 호를 고른다.
+    2024년 2호가 'AI 기술 도입' 국가별 특집이라 좋은 소스다. 동향형이라 `region` 에
+    국가명을 넣는다.
 
 #### 교육정책네트워크 국가별 교육동향 (12)
 - 교육정책네트워크 정보센터의 국가별 교육동향 사이트 콘텐츠 직접 읽기
