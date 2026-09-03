@@ -43,11 +43,18 @@ def done_ids(instdir, pat):
             ids.add(m.group(1))
     return ids
 
+# 문서 자체를 가리키지 않고 검색·목록 문맥만 담는 파라미터. 붙어 있으면 같은 문서가
+# 서로 다른 URL 로 잡혀 요약여부 대조가 실패한다(unesdoc 의 posInSet/queryId, GEM 의 hub 등).
+DROP_PARAMS = {"posinset", "queryid", "hub", "posset"}
+
 def norm_url(u):
-    # utm_* 추적 파라미터 제거 (edpolicy-intl 은 외부 원문 URL 이 곧 고유 키)
+    # utm_* 및 목록 문맥 파라미터 제거 (edpolicy-intl 은 외부 원문 URL 이 곧 고유 키)
     p=urllib.parse.urlsplit(u.strip())
-    q=[(k,v) for k,v in urllib.parse.parse_qsl(p.query) if not k.lower().startswith("utm_")]
-    return urllib.parse.urlunsplit((p.scheme,p.netloc,p.path,urllib.parse.urlencode(q),"")).rstrip("?")
+    q=[(k,v) for k,v in urllib.parse.parse_qsl(p.query)
+       if not k.lower().startswith("utm_") and k.lower() not in DROP_PARAMS]
+    # unesdoc 은 같은 문서를 `.../pf0000396364` 와 `.../pf0000396364.locale=en` 두 형태로 준다.
+    path=re.sub(r'\.locale=[A-Za-z_-]+$', '', p.path)
+    return urllib.parse.urlunsplit((p.scheme,p.netloc,path,urllib.parse.urlencode(q),"")).rstrip("?")
 
 def done_urls(instdir):
     # source_url 자체(정규화)로 대조하는 게시판용 (상세 seq 가 없는 edpolicy-intl)
