@@ -94,8 +94,8 @@ def add(code, name, ident, title, pub, url, force_rel=False, done_key=None):
 
 def crawl_kice_research():
     code,name="kice-research","교육과정평가원 연구보고서"
-    seen=set(); page=1
-    while page<=120:
+    seen=set(); page=1; empty=0
+    while page<=120 and empty<2:
         s=get(f"https://www.kice.re.kr/resrchBoard/list.do?cate=0&s=kice&m=030109&page={page}")
         b=s[s.find("<tbody"):s.find("</tbody>")]
         new=0
@@ -110,14 +110,15 @@ def crawl_kice_research():
             yr=cl(tds[5]) if len(tds)>5 else ""
             url=f"https://www.kice.re.kr/resrchBoard/view.do?seq={seq}&s=kice&m=030109"
             add(code,name,seq,html.unescape(t.group(1)).strip() if t else cl(tds[3]),yr,url)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
         page+=1
     print(f"{code}: {len(seen)}")
 
 def crawl_kedi_research():
     code,name="kedi-research","교육개발원 연구보고서"
-    seen=set()
+    seen=set(); empty=0
     for page in range(1,74):
+        if empty>=2: break
         s=get(f"https://www.kedi.re.kr/khome/main/research/listPubForm.do?maxResults=100&currentPage={page}")
         b=s[s.find("<tbody"):s.find("</tbody>")]
         new=0
@@ -132,13 +133,14 @@ def crawl_kedi_research():
             yr=cl(tds[2]) if len(tds)>2 else ""
             url=f"https://www.kedi.re.kr/khome/main/research/selectPubForm.do?plNum0={pl}"
             add(code,name,pl,cl(t.group(1)) if t else "",yr[:4],url)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
     print(f"{code}: {len(seen)}")
 
 def crawl_kosac_research():
     code,name="kosac-research","한국과학창의재단 연구보고서"
-    seen=set()
+    seen=set(); empty=0
     for page in range(1,8):
+        if empty>=2: break
         s=get(f"https://www.kosac.re.kr/menus/244/boards/457/posts?page={page}")
         for li in re.split(r'<td class="tit">', s):
             a=re.search(r'<a title="([^"]*)" href="/menus/244/boards/457/posts/(\d+)', li)
@@ -158,8 +160,8 @@ def crawl_keris(kind):
     else:
         code,name,mi,api="keris-issue","한국교육학술정보원 이슈리포트","1139","selectPblcteRMList"
         info="selectPblcteRMInfo"
-    seen=set(); page=1
-    while page<=40:
+    seen=set(); page=1; empty=0
+    while page<=40 and empty<2:
         s=get(f"https://keris.or.kr/main/ad/pblcte/{api}.do?mi={mi}&currPage={page}")
         new=0
         for tr in re.split(r"<tr[ >]",s):
@@ -171,14 +173,15 @@ def crawl_keris(kind):
             yr=re.search(r'발행년도</strong>\s*(\d{4})',tr,re.S)
             url=f"https://keris.or.kr/main/ad/pblcte/{info}.do?mi={mi}&pblcteSeq={seq}"
             add(code,name,seq,cl(a.group(2)),(yr.group(1) if yr else ""),url)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
         page+=1
     print(f"{code}: {len(seen)}")
 
 def crawl_spri():
     code,name="spri","소프트웨어정책연구소"
-    seen=set()
+    seen=set(); empty=0
     for page in range(1,6):
+        if empty>=2: break
         s=get(f"https://www.spri.kr/posts?data_page={page}&code=data_all&study_type=&board_type=research")
         for li in re.split(r'<li>\s*<div class="box">', s)[1:]:
             vid=re.search(r'/posts/view/(\d+)\?', li)
@@ -194,8 +197,8 @@ def crawl_spri():
 
 def crawl_kice_trend():
     code,name="kice-trend","교육과정평가원 국제교육동향"
-    seen=set(); page=1
-    while page<=30:
+    seen=set(); page=1; empty=0
+    while page<=30 and empty<2:
         s=get(f"https://www.kice.re.kr/boardCnts/list.do?type=default&page={page}&m=030207&boardID=5000064&s=kice")
         b=s[s.find("<tbody"):s.find("</tbody>")]
         new=0
@@ -209,15 +212,16 @@ def crawl_kice_trend():
             yr=re.search(r'<td>(\d{4})</td>\s*</tr>',tr)
             url=f"https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq={seq}&m=030207&s=kice"
             add(code,name,seq,html.unescape(t.group(1)).strip(),(yr.group(1) if yr else ""),url)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
         page+=1
     print(f"{code}: {len(seen)}")
 
 def crawl_kedi_brief():
     # 브리프(8): 전 교육주제라 키워드 필터링 (다른 연구보고서와 동일)
     code,name="kedi-brief","교육개발원 브리프"
-    seen=set()
+    seen=set(); empty=0
     for page in range(1,40):
+        if empty>=2: break
         s=post("https://www.kedi.re.kr/khome/main/research/kediBriefData.do",{
             "maxResults":"15","maxLinks":"10","currentPage":str(page),"selectTp":"0",
             "isReply":"0","article_sq_no":"","articleSrchKwd":"","isDocSearch":"",
@@ -233,14 +237,15 @@ def crawl_kedi_brief():
             url=(f"https://www.kedi.re.kr/khome/main/research/selectKediBriefForm.do?"
                  f"article_sq_no={sq}&board_sq_no=41&maxResults=15&currentPage=1&selectTp=0&isReply=0")
             add(code,name,sq,title,(yr.group(1) if yr else ""),url)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
     print(f"{code}: {len(seen)}")
 
 def crawl_kosac_trend():
     # 동향리포트(9): 세계 교육 트렌드용 → 전부 관련(force_rel)
     code,name="kosac-trend","한국과학창의재단 동향리포트"
-    seen=set()
+    seen=set(); empty=0
     for page in range(1,12):
+        if empty>=2: break
         s=get(f"https://www.kosac.re.kr/menus/248/boards/459/posts?page={page}")
         new=0
         for li in re.split(r'<td class="tit">', s):
@@ -252,14 +257,16 @@ def crawl_kosac_trend():
             d=re.search(r'<td class="date">([\d-]{8,10})</td>', li)
             url=f"https://www.kosac.re.kr/menus/248/boards/459/posts/{pid}"
             add(code,name,pid,html.unescape(a.group(1)).strip(),(d.group(1)[:4] if d else ""),url,force_rel=True)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
     print(f"{code}: {len(seen)}")
 
 def crawl_edpolicy_domestic():
     # 국가별 교육동향(12): board/30, view(seq) → 상세 = /board/30/<seq>. 전부 관련.
     code,name="edpolicy-domestic","교육정책네트워크 국가별교육동향"
-    seen=set(); page=1
-    while page<=40:
+    # 페이지 한 번 실패로 색인이 통째로 날아가지 않도록, 빈 페이지가 연속 2번일 때만 종료한다.
+    # (2026-09: 일시적 응답 실패로 1페이지만 수집돼 396행이 10행으로 줄어든 적이 있다.)
+    seen=set(); page=1; empty=0
+    while page<=40 and empty<2:
         s=get(f"https://edpolicy.kedi.re.kr/edpolicy/board/30?pageIndex={page}")
         new=0
         for tr in re.split(r"<tr[ >]", s):
@@ -272,7 +279,7 @@ def crawl_edpolicy_domestic():
             d=re.search(r'(\d{4}[.\-]\d{2}[.\-]\d{2})', tr)
             url=f"https://edpolicy.kedi.re.kr/edpolicy/board/30/{seq}"
             add(code,name,seq,cl(t.group(1)) if t else "",(d.group(1)[:4] if d else ""),url,force_rel=True)
-        if new==0: break
+        empty = empty+1 if new==0 else 0
         page+=1
     print(f"{code}: {len(seen)}")
 
