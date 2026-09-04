@@ -3,7 +3,7 @@ institution: kice-trend
 title: "싱가포르: AI 기술 도입에 따른 초중등 교육 정책의 방향, 주요 쟁점, 교육 현장의 변화 사례"
 region: "싱가포르"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090403&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090403&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

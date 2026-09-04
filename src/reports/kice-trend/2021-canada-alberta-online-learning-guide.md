@@ -3,7 +3,7 @@ institution: kice-trend
 title: "캐나다: 앨버타 주의 온라인 학습 가이드"
 region: "캐나다"
 date: 2021-08-12
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5064407&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5064407&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

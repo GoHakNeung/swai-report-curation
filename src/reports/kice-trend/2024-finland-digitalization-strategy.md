@@ -3,7 +3,7 @@ institution: kice-trend
 title: "핀란드: AI 시대의 교육 변혁을 위한 핀란드 디지털화 전략"
 region: "핀란드"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090409&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090409&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

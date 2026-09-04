@@ -3,7 +3,7 @@ institution: kice-trend
 title: "스웨덴: 팬데믹 이후 스웨덴 학교의 변화와 예술·실용 과목에서 원격 수업의 방안"
 region: "스웨덴"
 date: 2022-12-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5083468&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5083468&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

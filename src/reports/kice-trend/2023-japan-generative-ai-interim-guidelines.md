@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본: 초중등 교육 단계에 있어서의 생성형 AI 사용에 대한 잠정적 지침"
 region: "일본"
 date: 2023-09-26
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5085293&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5085293&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

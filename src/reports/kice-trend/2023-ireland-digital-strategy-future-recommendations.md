@@ -3,7 +3,7 @@ institution: kice-trend
 title: "아일랜드: 학교를 위한 디지털 전략 중 미래를 위한 제언"
 region: "아일랜드"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084339&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084339&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

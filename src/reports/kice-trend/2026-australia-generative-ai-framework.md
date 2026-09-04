@@ -3,7 +3,7 @@ institution: kice-trend
 title: "호주: 호주 교육 분야 생성형 AI 정책 및 활용 동향"
 region: "호주"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100815&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100815&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

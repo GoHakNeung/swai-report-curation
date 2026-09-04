@@ -3,7 +3,7 @@ institution: kice-trend
 title: "미국: 미국 교육에서의 AI 활용 지침 - 위스콘신주와 캘리포니아주 사례를 중심으로"
 region: "미국"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100810&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100810&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

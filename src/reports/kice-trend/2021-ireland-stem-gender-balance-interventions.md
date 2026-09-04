@@ -3,7 +3,7 @@ institution: kice-trend
 title: "아일랜드: 유치원, 초중등 과정 STEM 교육에 있어서 성 균형 문제 해결에 효과적인 교육 개입 방안을 찾기 위한 문헌 검토"
 region: "아일랜드"
 date: 2021-05-04
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5063366&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5063366&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

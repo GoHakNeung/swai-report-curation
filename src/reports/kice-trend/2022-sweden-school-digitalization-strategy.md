@@ -3,7 +3,7 @@ institution: kice-trend
 title: "스웨덴: 스웨덴 학교의 디지털화 전략"
 region: "스웨덴"
 date: 2022-12-07
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5083129&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5083129&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

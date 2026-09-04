@@ -3,7 +3,7 @@ institution: kice-trend
 title: "캐나다: 캐나다의 교육 분야 인공지능 관련 정책 동향"
 region: "캐나다"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100814&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100814&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

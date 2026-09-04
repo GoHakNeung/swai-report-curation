@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본의 AI 기술 도입에 따른 교육 현장의 변화 - 리딩 DX 스쿨 사업 생성 AI 시범 학교 성과 보고"
 region: "일본"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090405&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090405&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

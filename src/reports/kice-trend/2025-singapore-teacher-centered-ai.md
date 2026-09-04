@@ -3,7 +3,7 @@ institution: kice-trend
 title: "싱가포르: 교사 중심의 AI 활용, 미래 교육을 설계하다"
 region: "싱가포르"
 date: 2025-07-24
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5095537&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5095537&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

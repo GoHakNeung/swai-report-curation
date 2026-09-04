@@ -3,7 +3,7 @@ institution: kice-trend
 title: "뉴질랜드: 생성형 AI(Generative AI)의 안전한 활용"
 region: "뉴질랜드"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090397&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090397&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

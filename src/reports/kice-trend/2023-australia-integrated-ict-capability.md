@@ -3,7 +3,7 @@ institution: kice-trend
 title: "호주: 호주 초·중·고등학생들의 통합적 ICT 활용 능력"
 region: "호주"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084344&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084344&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

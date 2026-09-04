@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본: '아이들을 위한 정보윤리교육의 슬로건 및 로고 마크' 사용 요령"
 region: "일본"
 date: 2020-08-14
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050413&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050413&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

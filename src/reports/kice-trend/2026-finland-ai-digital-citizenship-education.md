@@ -3,7 +3,7 @@ institution: kice-trend
 title: "핀란드: 핀란드 교육 분야의 인공지능(AI) 활용 및 디지털 시민교육 정책 동향"
 region: "핀란드"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100817&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100817&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본: ICT를 활용한 교육정책 - GIGA 스쿨 실시 이후 학생들의 배움의 질은 어떻게 바뀌고 있는가"
 region: "일본"
 date: 2022-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076378&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076378&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

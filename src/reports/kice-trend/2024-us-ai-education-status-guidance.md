@@ -3,7 +3,7 @@ institution: kice-trend
 title: "미국: 미국 AI 활용 교육 실태와 적절한 활용을 위한 지침"
 region: "미국"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090401&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090401&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

@@ -3,7 +3,7 @@ institution: kice-trend
 title: "호주: 가상현실과 학교 교육"
 region: "호주"
 date: 2022-09-28
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5077705&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5077705&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

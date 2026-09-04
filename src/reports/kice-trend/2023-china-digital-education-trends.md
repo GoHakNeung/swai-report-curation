@@ -3,7 +3,7 @@ institution: kice-trend
 title: "중국: 중국 디지털 교육 발전의 최신 동향"
 region: "중국"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084342&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084342&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

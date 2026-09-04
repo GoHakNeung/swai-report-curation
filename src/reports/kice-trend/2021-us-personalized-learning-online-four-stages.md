@@ -3,7 +3,7 @@ institution: kice-trend
 title: "미국: 온라인 교육 상황에서 자기 주도적 맞춤 학습(Personalized Learning) 적용 4단계 안내"
 region: "미국"
 date: 2021-08-12
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5064405&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5064405&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

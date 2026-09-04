@@ -3,7 +3,7 @@ institution: kice-trend
 title: "싱가포르: 싱가포르 교육 분야 생성형 AI 대응 체계 분석"
 region: "싱가포르"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100812&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100812&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

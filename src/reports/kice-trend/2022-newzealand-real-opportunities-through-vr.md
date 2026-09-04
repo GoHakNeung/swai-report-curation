@@ -3,7 +3,7 @@ institution: kice-trend
 title: "뉴질랜드: 가상현실을 통한 실제 기회"
 region: "뉴질랜드"
 date: 2022-07-20
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076920&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076920&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

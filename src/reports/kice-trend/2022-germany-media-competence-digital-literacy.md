@@ -3,7 +3,7 @@ institution: kice-trend
 title: "독일: 매체역량과 디지털 리터러시"
 region: "독일"
 date: 2022-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076383&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076383&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

@@ -3,7 +3,7 @@ institution: kice-trend
 title: "아일랜드: 디지털 학습 체계에 대한 전국 평가 첫 결과"
 region: "아일랜드"
 date: 2020-08-14
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050403&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050403&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

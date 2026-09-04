@@ -3,7 +3,7 @@ institution: kice-trend
 title: "영국: 생성형 인공지능(Generative AI)에 대한 교육부 입장"
 region: "영국"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084340&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084340&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

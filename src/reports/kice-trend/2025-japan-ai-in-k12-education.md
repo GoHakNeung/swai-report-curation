@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본 초·중등교육에서의 AI 활용 현황과 방향성"
 region: "일본"
 date: 2025-10-01
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5095896&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5095896&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

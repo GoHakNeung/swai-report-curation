@@ -3,7 +3,7 @@ institution: kice-trend
 title: "핀란드 민주주의 교육과 디지털 미디어 문해력 정책 동향"
 region: "핀란드"
 date: 2026-05-22
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100594&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100594&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

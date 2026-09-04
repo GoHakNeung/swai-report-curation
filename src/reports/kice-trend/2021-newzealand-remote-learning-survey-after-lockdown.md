@@ -3,7 +3,7 @@ institution: kice-trend
 title: "뉴질랜드: COVID-19 봉쇄 후 원격 수업 실태 조사"
 region: "뉴질랜드"
 date: 2021-08-12
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5064404&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5064404&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

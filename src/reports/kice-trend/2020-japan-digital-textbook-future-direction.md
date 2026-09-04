@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본: 디지털 교과서의 향후 방향에 관한 검토사항(안)"
 region: "일본"
 date: 2020-12-04
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5061978&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5061978&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

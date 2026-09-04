@@ -3,7 +3,7 @@ institution: kice-trend
 title: "영국 초·중등 교육에서의 AI 활용에 따른 쟁점과 교육 정책 방향"
 region: "영국"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090404&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090404&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

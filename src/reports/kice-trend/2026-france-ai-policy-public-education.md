@@ -3,7 +3,7 @@ institution: kice-trend
 title: "프랑스: 프랑스 교육 분야 AI 정책 및 공교육 현황"
 region: "프랑스"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100816&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100816&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

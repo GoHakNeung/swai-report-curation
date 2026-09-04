@@ -3,7 +3,7 @@ institution: kice-trend
 title: "싱가포르: 디지털 문해력 교육과정"
 region: "싱가포르"
 date: 2020-08-14
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050421&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050421&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

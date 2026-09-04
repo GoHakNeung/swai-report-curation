@@ -3,7 +3,7 @@ institution: kice-trend
 title: "독일: 독일의 디지털 세계 맞춤교육 현황 - 노르트라인 베스트팔렌, 바이에른, 베를린을 중심으로"
 region: "독일"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084335&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084335&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

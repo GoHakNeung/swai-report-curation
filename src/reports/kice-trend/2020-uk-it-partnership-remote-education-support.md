@@ -3,7 +3,7 @@ institution: kice-trend
 title: "영국: IT 기업 파트너십 구축을 통한 원격교육 지원"
 region: "영국"
 date: 2020-08-14
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050431&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5050431&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

@@ -74,6 +74,7 @@ DONE = {
  "keris-issue": done_ids("keris-issue", r'pblcteSeq=(\d+)'),
  "kice-trend": done_ids("kice-trend", r'boardSeq=(\d+)'),
  # --- 추가 게시판 ---
+ "kice-cardnews": done_ids("kice-cardnews", r'cardNewsBoard/view\.do\?seq=(\d+)'),
  "kedi-brief": done_ids("kedi-brief", r'article_sq_no=(\d+)'),
  "kosac-trend": done_ids("kosac-trend", r'/posts/(\d+)'),
  "edpolicy-domestic": done_ids("edpolicy-domestic", r'/board/30/(\d+)'),
@@ -210,8 +211,33 @@ def crawl_kice_trend():
             if seq in seen: continue
             seen.add(seq); new+=1
             yr=re.search(r'<td>(\d{4})</td>\s*</tr>',tr)
-            url=f"https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq={seq}&m=030207&s=kice"
+            # &lev=0 이 없으면 상세가 "페이지를 찾을 수 없습니다" 로 뜬다(goView 가 lev 를 붙인다).
+            url=f"https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq={seq}&m=030207&s=kice&lev=0"
             add(code,name,seq,html.unescape(t.group(1)).strip(),(yr.group(1) if yr else ""),url)
+        empty = empty+1 if new==0 else 0
+        page+=1
+    print(f"{code}: {len(seen)}")
+
+def crawl_kice_cardnews():
+    # 카드뉴스(7): 제목만 수집하는 유형(title_external 이라 제목 클릭 시 기관 사이트로 이동).
+    # 전 교과 대상이라 키워드 필터링 필요. 갤러리형 정적 HTML.
+    code,name="kice-cardnews","교육과정평가원 카드뉴스"
+    seen=set(); page=1; empty=0
+    while page<=20 and empty<2:
+        s=get(f"https://www.kice.re.kr/cardNewsBoard/list.do?boardId=1&s=kice&m=030216&page={page}")
+        new=0
+        for li in re.split(r"<li>", s):
+            a=re.search(r'detail/view\.do\?seq=(\d+)', li)
+            if not a: continue
+            seq=a.group(1)
+            if seq in seen: continue
+            t=re.search(r'<strong>(.*?)</strong>', li, re.S) or re.search(r'<img[^>]*alt="([^"]+)"', li)
+            if not t: continue
+            seen.add(seq); new+=1
+            # 이미지 경로의 /1/YYYY/MM/<seq>/ 에서 발행 연·월을 얻는다(목록에 날짜 표기가 없다).
+            d=re.search(r'/upload/cardNewsBoard/1/(\d{4})/(\d{2})/'+seq+'/', li)
+            url=f"https://www.kice.re.kr/cardNewsBoard/view.do?seq={seq}&m=030216&s=kice"
+            add(code,name,seq,cl(t.group(1)),(d.group(1) if d else ""),url)
         empty = empty+1 if new==0 else 0
         page+=1
     print(f"{code}: {len(seen)}")
@@ -308,7 +334,7 @@ def crawl_edpolicy_intl():
 for fn in [crawl_kice_research, crawl_kedi_research, crawl_kosac_research,
            lambda: crawl_keris("research"), lambda: crawl_keris("issue"),
            crawl_spri, crawl_kice_trend,
-           crawl_kedi_brief, crawl_kosac_trend, crawl_edpolicy_domestic, crawl_edpolicy_intl]:
+           crawl_kice_cardnews, crawl_kedi_brief, crawl_kosac_trend, crawl_edpolicy_domestic, crawl_edpolicy_intl]:
     fn()
 
 os.makedirs(os.path.join(REPO,"data"), exist_ok=True)

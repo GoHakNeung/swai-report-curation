@@ -3,7 +3,7 @@ institution: kice-trend
 title: "독일: 독일 라인란트팔츠주의 공식 AI 교육 플랫폼 \"fobizz\""
 region: "독일"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100809&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100809&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

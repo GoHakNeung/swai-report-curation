@@ -3,7 +3,7 @@ institution: kice-trend
 title: "스웨덴: 스웨덴의 2021년 국제 문해 능력 평가(PIRLS) 결과와 디지털화 중단"
 region: "스웨덴"
 date: 2023-11-30
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5089139&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5089139&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

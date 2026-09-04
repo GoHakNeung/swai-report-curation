@@ -3,7 +3,7 @@ institution: kice-trend
 title: "중국: 초중등 인공지능 담당 교사 능력에 관한 표준안"
 region: "중국"
 date: 2022-07-20
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076913&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5076913&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

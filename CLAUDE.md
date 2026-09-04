@@ -50,7 +50,10 @@ _site/                  # 빌드 결과물 (git 제외)
 - 기관 12칸 그리드(2열 × 6행, 모바일 1열). 순서는 institutions.json의 `order`.
 - 각 칸: 그 기관의 최신 6건(제목 + 연구책임자, 각각 상세 페이지로 링크), `date` 내림차순.
 - 칸 하단: '더보기' → 기관별 전체 목록 페이지.
-- `link_only: true`인 기관은 목록 없이 '사이트 바로가기' 버튼만 렌더한다. (예: 카드뉴스)
+- `link_only: true`인 기관은 목록 없이 '사이트 바로가기' 버튼만 렌더한다.
+  (현재 이 플래그를 쓰는 기관은 없다. 템플릿에만 남아 있는 옵션이다.)
+- `title_external: true`인 기관(**카드뉴스(7), 브리프(8)**)은 목록은 그대로 보여 주되
+  제목을 클릭하면 상세 페이지가 아니라 기관 사이트(`source_url`, 새 탭)로 바로 이동한다.
 
 ## 보고서 스키마 (src/reports/<code>/<slug>.md)
 ```markdown
@@ -77,7 +80,8 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
 - `pdf_url`은 선택. .do 계열 정부 사이트는 직링크가 없을 수 있으므로, 안정적 링크가
   없으면 비우고 `source_url`만 연결한다.
 - `table_of_contents`는 선택. 원문에 명확한 목차가 있으면 마크다운 리스트로 옮긴다.
-- `link_only` 기관(카드뉴스)에는 보고서 .md를 만들지 않는다.
+- `title_external` 기관(카드뉴스·브리프)도 .md는 만든다. 다만 본문·keywords·abstract_source
+  없이 front matter만 채운다(카드뉴스는 institution/title/date/source_url).
 
 ## 상세페이지 템플릿 가이드
 
@@ -224,7 +228,9 @@ table_of_contents: |             # 선택. 보고서 목차 (마크다운 리스
   - 목록: `.../boardCnts/list.do?boardID=5000064&m=030207&s=kice&page=<n>`
     (페이지 파라미터는 `page`). 각 `<tr>` 에 `goView('5000064','<seq>')` 의 seq,
     제목(`[국가] 제목` 형태), `fn_fileDown('<fileKey>')` 의 PDF 다운로드 키가 있다.
-  - 상세(= `source_url`): `.../boardCnts/view.do?boardID=5000064&boardSeq=<seq>&m=030207&s=kice`
+  - 상세(= `source_url`): `.../boardCnts/view.do?boardID=5000064&boardSeq=<seq>&m=030207&s=kice&lev=0`
+    **`&lev=0` 을 반드시 붙인다.** 없으면 HTTP 200 이면서 "요청하신 페이지를 찾을 수 없습니다"
+    안내가 떠 링크가 죽는다(목록의 `goView()` 가 `lev` 를 함께 넘기기 때문). (2026-09 확인)
     (목록에 fileKey 가 안 보이면 상세 HTML 에서 `fn_fileDown` 을 뽑는다.)
   - **PDF 다운로드는 POST**: `.../boardCnts/fileDown.do` 에 `fileSeq=<fileKey>` 로 POST.
     PDF 첫 줄에 `국제교육동향 / 20XX년 N호 / 발행일`, 이후 '배경'·'주요내용'에 본문이 있다.
@@ -461,10 +467,10 @@ for img in out/p-*.png; do tesseract "$img" - -l kor --psm 6 >> out.txt; done
 매 세션마다 기관 사이트의 보고서를 PDF까지 분석하면 토큰이 많이 든다. 이를 줄이기 위해
 **제목만 크롤링한 색인 CSV**를 두고, 이 CSV를 근거로 요약 대상을 고른다.
 
-- **대상 게시판(11)**:
-  - **키워드 필터형(8)** — 전 교과/전 교육주제라 관심 키워드로 관련여부 판정:
+- **대상 게시판(12 = 기관 전체)**:
+  - **키워드 필터형(9)** — 전 교과/전 교육주제라 관심 키워드로 관련여부 판정:
     kice-research, kedi-research, kosac-research, keris-research, spri, keris-issue,
-    kice-trend, **kedi-brief**.
+    kice-trend, **kice-cardnews(7)**, **kedi-brief(8)**.
   - **전부 관련형(3)** — 세계 교육 트렌드 확인용이라 SW·AI 무관하게 **관련여부=o 고정**
     (크롤러가 `force_rel=True`): **kosac-trend(9), edpolicy-intl(10), edpolicy-domestic(12)**.
     (`매칭키워드`는 참고용으로 계속 채워, 트렌드 항목 중 SW·AI 건을 구분할 수 있다.)

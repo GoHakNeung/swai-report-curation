@@ -3,7 +3,7 @@ institution: kice-trend
 title: "캐나다: 디지털 세계를 위한 학습 - 범캐나다 K-12 컴퓨터공학 교육 프레임워크"
 region: "캐나다"
 date: 2022-12-07
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5083123&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5083123&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

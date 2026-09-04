@@ -3,7 +3,7 @@ institution: kice-trend
 title: "미국: 모두를 위한 디지털 공정성 강화 - 디지털 격차를 좁히고 디지털 기반 학습을 가능하게 하는 효과적인 계획을 위한 지역사회 기반 권고"
 region: "미국"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084336&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084336&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

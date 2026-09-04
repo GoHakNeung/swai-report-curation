@@ -3,7 +3,7 @@ institution: kice-trend
 title: "캐나다 연방 정부의 AI 교육 지원 정책과 브리티시컬럼비아주의 AI 활용 가이드라인"
 region: "캐나다"
 date: 2024-07-18
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090407&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5090407&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

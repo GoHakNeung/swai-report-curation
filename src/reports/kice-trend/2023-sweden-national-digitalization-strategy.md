@@ -3,7 +3,7 @@ institution: kice-trend
 title: "스웨덴: 스웨덴의 새로운 국가 디지털화 전략과 디지털 학습의 적용"
 region: "스웨덴"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084337&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084337&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

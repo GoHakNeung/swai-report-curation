@@ -3,7 +3,7 @@ institution: kice-trend
 title: "호주: 효과적인 원격 수업의 4가지 요소"
 region: "호주"
 date: 2021-05-04
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5063369&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5063369&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

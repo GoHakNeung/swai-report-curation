@@ -3,7 +3,7 @@ institution: kice-trend
 title: "스웨덴: 스웨덴의 교육 분야 AI 관련 현황/정책 최신 동향"
 region: "스웨덴"
 date: 2026-07-23
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100811&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5100811&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 

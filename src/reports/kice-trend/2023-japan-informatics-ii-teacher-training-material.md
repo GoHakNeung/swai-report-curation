@@ -3,7 +3,7 @@ institution: kice-trend
 title: "일본: 고등학교 정보과 '정보Ⅱ' 교원 연수용 교재에 대해"
 region: "일본"
 date: 2023-05-11
-source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084341&m=030207&s=kice
+source_url: https://www.kice.re.kr/boardCnts/view.do?boardID=5000064&boardSeq=5084341&m=030207&s=kice&lev=0
 abstract_source: pdf_analyzed
 ---
 
